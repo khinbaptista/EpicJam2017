@@ -102,7 +102,7 @@ duration = 0.1
 
 script/script = ExtResource( 7 )
 
-[node name="attacks" type="Node2D" parent="."]
+[node name="attacks" type="Node" parent="."]
 
 script/script = ExtResource( 8 )
 surround_attack = ExtResource( 9 )
