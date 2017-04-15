@@ -11,3 +11,4 @@ func hit(damage):
 	
 	if health.value == 0:
 		emit_signal("death")
+		get_tree().quit()

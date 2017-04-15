@@ -8,7 +8,6 @@ var target
 
 func on_enter():
 	.on_enter()
-	character.attack(target)
 	attack_timer = 0.0
 	set_process(true)
 	print("attack enter")

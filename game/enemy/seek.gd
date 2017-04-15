@@ -9,7 +9,7 @@ var next_point
 
 func on_enter():
 	.on_enter()
-	if target == null or not target in character.get_node("sight").get_overlapping_bodies():
+	if target == null or not character.get_node("sight").get_overlapping_bodies().has(target):
 		machine.make_transition("idle")
 		return
 	

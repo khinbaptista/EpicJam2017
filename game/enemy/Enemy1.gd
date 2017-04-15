@@ -55,7 +55,6 @@ func process_input():
 	
 var lerp_w = 0;
 func process_particles(dir, delta):
-
 	if(fsm.current_state.name == "Attacking"):
 		return;
 
@@ -74,7 +73,9 @@ func process_particles(dir, delta):
 func attack(target):
 	look_at(target.get_global_pos())
 	anim_player.play("attack");
-	
+	instance_attack(target)
+
+func instance_attack(target):
 	var attack_node = attack_scene.instance()
 	attack_node.target = target
 	attack_node.damage = get_node("attributes/damage").value
@@ -85,7 +86,7 @@ func hit(damage):
 	var health = get_node("attributes/health")
 	health.value -= damage
 	
-	printt("Enemy hit!", health.value)
+	printt("Enemy hit!", damage, health.value)
 	
 	if health.value == 0:
 		emit_signal("death")
