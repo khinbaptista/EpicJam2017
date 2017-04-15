@@ -45,7 +45,7 @@ func process_input():
 	if(Input.is_action_pressed("ui_right")):
 		dir.x = 1;
 	elif(Input.is_action_pressed("ui_left")):
-		dir.x = -1;	
+		dir.x = -1;
 	
 	if(Input.is_action_pressed("ui_accept")):
 		attack();
@@ -72,6 +72,17 @@ func process_particles(dir, delta):
 	
 func attack():
 	anim_player.play("attack");
+
+signal death
+
+func hit(damage):
+	var health = get_node("attributes/health")
+	health.value -= damage
+	
+	if health.value == 0:
+		emit_signal("death")
+		queue_free()
+	
 
 func on_body_enter(body):
 	if body extends PlayerClass:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://enemy/seek.gd" type="Script" id=5]
 [ext_resource path="res://enemy/attack.gd" type="Script" id=6]
 [ext_resource path="res://player/light.png" type="Texture" id=7]
+[ext_resource path="res://gameplay/attribute.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -84,12 +85,12 @@ radius = 527.555
 
 transform/scale = Vector2( 0.25, 0.25 )
 input/pickable = false
-collision/layers = 1
-collision/mask = 1
+collision/layers = 3
+collision/mask = 3
 collision/margin = 0.08
 script/script = ExtResource( 1 )
 speed = 100.0
-level_path = NodePath(".")
+level_path = null
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -185,21 +186,22 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node2D" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 3 )
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node2D" parent="StateMachine"]
 
 script/script = ExtResource( 4 )
 cooldown = 0
 
-[node name="Seeking" type="Node" parent="StateMachine"]
+[node name="Seeking" type="Node2D" parent="StateMachine"]
 
 script/script = ExtResource( 5 )
 cooldown = 0
 
-[node name="Attacking" type="Node" parent="StateMachine"]
+[node name="Attacking" type="Node2D" parent="StateMachine"]
 
 script/script = ExtResource( 6 )
 cooldown = 0
@@ -228,6 +230,7 @@ shadow/item_mask = 1
 
 [node name="sight" type="Area2D" parent="."]
 
+editor/display_folded = true
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -239,13 +242,28 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
 
-visibility/visible = false
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="body_enter" from="sight" to="." method="on_body_enter"]
+[node name="attributes" type="Node" parent="."]
 
-[connection signal="body_exit" from="sight" to="StateMachine/Seeking" method="body_exit"]
+[node name="movement_speed" type="Node" parent="attributes"]
+
+script/script = ExtResource( 8 )
+value = 200.0
+max_value = 5000.0
+multiplier = 1.0
+addition = 0.0
+
+[node name="health" type="Node" parent="attributes"]
+
+script/script = ExtResource( 8 )
+value = 100.0
+max_value = 100.0
+multiplier = 1.0
+addition = 0.0
+
+[connection signal="body_enter" from="sight" to="." method="on_body_enter"]
 
 
