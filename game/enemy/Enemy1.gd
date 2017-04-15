@@ -31,10 +31,10 @@ func handle_fsm():
 	var anim_name = anim_player.get_current_animation();
 	var anim_pos = anim_player.get_current_animation_pos();
 	if(anim_name == "attack"):
-		if(anim_pos > 0 && anim_pos < 0.99):
-			fsm.emit_signal("attack");
+		if(anim_pos > 0 && anim_pos < 2.5):
+			fsm.set_current_state("Attacking")
 		else:
-			fsm.emit_signal("idle");
+			fsm.set_current_state("Idle")
 	
 func process_input():
 	dir = Vector2(0,0);
@@ -54,6 +54,9 @@ func process_input():
 	
 var lerp_w = 0;
 func process_particles(dir, delta):
+
+	if(fsm.current_state.name == "Attacking"):
+		return;
 
 	if(dir.length() > 0):
 		if(lerp_w > 0.05):
