@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/circle.png" type="Texture" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://player/movement.gd" type="Script" id=5]
 [ext_resource path="res://player/dash.gd" type="Script" id=6]
 [ext_resource path="res://player/light_field.gd" type="Script" id=7]
+[ext_resource path="res://player/attacks.gd" type="Script" id=8]
+[ext_resource path="res://player/attacks/surround_attack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://player/attacks/directional_attack.tscn" type="PackedScene" id=10]
+[ext_resource path="res://player/attacks/ranged_attack.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -68,7 +72,13 @@ max_value = 150.0
 multiplier = 1.0
 addition = 0.0
 
-[node name="attack" type="Node" parent="attributes"]
+[node name="damage" type="Node" parent="attributes"]
+
+script/script = ExtResource( 4 )
+value = 100.0
+max_value = 100.0
+multiplier = 1.0
+addition = 0.0
 
 [node name="movement_speed" type="Node" parent="attributes"]
 
@@ -91,5 +101,12 @@ duration = 0.1
 [node name="light_field" type="Node" parent="."]
 
 script/script = ExtResource( 7 )
+
+[node name="attacks" type="Node" parent="."]
+
+script/script = ExtResource( 8 )
+surround_attack = ExtResource( 9 )
+directional_attack = ExtResource( 10 )
+ranged_attack = ExtResource( 11 )
 
 
