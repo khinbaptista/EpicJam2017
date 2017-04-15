@@ -4,7 +4,9 @@ extends KinematicBody2D
 # var a = 2
 # var b = "textvar"
 
+var fsm = null;
 var particle = null;
+var anim_player = null;
 var dir = Vector2(0,0);
 
 export(float, 0, 1000, 2) var speed = 10;
@@ -14,14 +16,31 @@ func _ready():
 	# Initialization here
 	set_process(true);
 	particle = get_node("Particles2D");
+	anim_player = get_node("AnimationPlayer");
+	fsm = get_node("StateMachine");
 	pass
 	
 func _process(delta):
 	process_input();
 	move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
+	handle_fsm();
 	
 	
+	pass
+	
+func handle_fsm():
+	if(!anim_player.is_playing()):
+		return
+		
+	var anim_name = anim_player.get_current_animation();
+	var anim_pos = anim_player.get_current_animation_pos();
+	if(anim_name == "attack"):
+		if(anim_pos > 0 && anim_pos < 0.99):
+			fsm.emit_signal("attack");
+		else:
+			fsm.emit_signal("idle");
+		
 	pass
 	
 func process_input():
@@ -35,23 +54,30 @@ func process_input():
 	elif(Input.is_action_pressed("ui_left")):
 		dir.x = -1;	
 	
+	if(Input.is_action_pressed("ui_accept")):
+		attack();
+	
 	dir = dir.normalized();
+	
 	pass
 	
 var lerp_w = 0;
 func process_particles(dir, delta):
+
 	if(dir.length() > 0):
-		lerp_w = 0
+		if(lerp_w > 0.05):
+			lerp_w -= 3 * delta;
 		particle.set_param(particle.PARAM_GRAVITY_DIRECTION, rad2deg(dir.angle()) + 180);
-		particle.set_param(particle.PARAM_GRAVITY_STRENGTH, 800);
-		particle.set_param(particle.PARAM_LINEAR_VELOCITY, 100);
-		particle.set_param(particle.PARAM_ORBIT_VELOCITY, 0);
-		pass
 	else:
-		particle.set_param(particle.PARAM_GRAVITY_STRENGTH, lerp(800, 0, lerp_w));
-		particle.set_param(particle.PARAM_LINEAR_VELOCITY, lerp(100, 500, lerp_w));
-		particle.set_param(particle.PARAM_ORBIT_VELOCITY, lerp(0, 10, lerp_w));
+		if(lerp_w < 1):
+			lerp_w += 3 * delta;
 	
-	if(lerp_w < 1):
-		lerp_w += 2 * delta;
+	particle.set_param(particle.PARAM_GRAVITY_STRENGTH, lerp(1000, 0, lerp_w));
+	particle.set_param(particle.PARAM_LINEAR_VELOCITY, lerp(100, 300, lerp_w));
+	particle.set_param(particle.PARAM_ORBIT_VELOCITY, lerp(0, 5, lerp_w));
+	
+	pass
+	
+func attack():
+	anim_player.play("attack");
 	pass
