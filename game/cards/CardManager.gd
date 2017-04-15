@@ -40,7 +40,9 @@ func _ready():
 		newCard.set_pos(Vector2(y, 100))
 		newCard.get_child(0).set_scale(Vector2(0.15, 0.15))
 		newCard.get_child(0).set_texture(cardBack)
-		newCard.cardType = randi()%(totalCards + 1) + 1
+		randomize()
+		var randomType = randi()%(totalCards) + 1
+		newCard.cardType = randomType
 		cards.append(newCard)
 		AnimateCard(newCard)
 		add_child(newCard)
