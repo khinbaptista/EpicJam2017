@@ -1,6 +1,7 @@
 extends Node
 
 export(PackedScene) var surround_attack
+export(PackedScene) var directional_attack
 var damage_attr
 
 func _ready():
@@ -10,5 +11,10 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("attack_melee_surround") and not event.is_echo():
 		var attack = surround_attack.instance()
+		attack.damage = damage_attr.value
+		add_child(attack)
+	
+	if event.is_action_pressed("attack_melee_directional") and not event.is_echo():
+		var attack = directional_attack.instance()
 		attack.damage = damage_attr.value
 		add_child(attack)

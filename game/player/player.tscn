@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/circle.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://player/light_field.gd" type="Script" id=7]
 [ext_resource path="res://player/attacks.gd" type="Script" id=8]
 [ext_resource path="res://player/attacks/surround_attack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://player/attacks/directional_attack.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -104,5 +105,6 @@ script/script = ExtResource( 7 )
 
 script/script = ExtResource( 8 )
 surround_attack = ExtResource( 9 )
+directional_attack = ExtResource( 10 )
 
 
