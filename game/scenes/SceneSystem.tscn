@@ -5,8 +5,13 @@
 [node name="SceneSystem" type="Node2D"]
 
 script/script = ExtResource( 1 )
-sceneName = "res://scenes/scenePH.png"
+sceneName1 = "res://scenes/scenePH.png"
+sceneName2 = "res://scenes/scenePH.png"
+sceneName3 = "res://scenes/scenePH.png"
+sceneTime = 20
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="FirstSprite" type="Sprite" parent="."]
+
+[node name="SecondSprite" type="Sprite" parent="."]
 
 
