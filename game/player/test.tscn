@@ -31,6 +31,7 @@ modulate = Color( 0.03125, 0.03125, 0.03125, 1 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 
+visibility/visible = false
 visibility/opacity = 0.5
 visibility/self_opacity = 0.1
 navpoly = SubResource( 2 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
@@ -76,10 +76,15 @@ tracks/5/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0.257813, 0.257813, 1 ), Color( 1, 0.285156, 0.285156, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 406.101
+
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 527.555
+radius = 1018.45
 
 [node name="Enemy1" type="KinematicBody2D"]
 
@@ -126,6 +131,7 @@ color/color = Color( 0, 0, 0, 1 )
 
 [node name="attackparticle1" type="Particles2D" parent="."]
 
+visibility/visible = false
 config/amount = 14
 config/lifetime = 1.0
 config/emitting = false
@@ -151,6 +157,7 @@ color/color = Color( 1, 0.203125, 0.203125, 1 )
 
 [node name="attackparticle2" type="Particles2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 216.355, -22.606 )
 config/amount = 10
 config/lifetime = 0.5
@@ -186,25 +193,26 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="StateMachine" type="Node2D" parent="."]
+[node name="StateMachine" type="Node" parent="."]
 
 editor/display_folded = true
 script/script = ExtResource( 3 )
 
-[node name="Idle" type="Node2D" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine"]
 
 script/script = ExtResource( 4 )
 cooldown = 0
 
-[node name="Seeking" type="Node2D" parent="StateMachine"]
+[node name="Seeking" type="Node" parent="StateMachine"]
 
 script/script = ExtResource( 5 )
 cooldown = 0
 
-[node name="Attacking" type="Node2D" parent="StateMachine"]
+[node name="Attacking" type="Node" parent="StateMachine"]
 
 script/script = ExtResource( 6 )
 cooldown = 0
+attack_cooldown = 2.0
 
 [node name="Light2D" type="Light2D" parent="."]
 
@@ -228,12 +236,32 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 
+[node name="attack_range" type="Area2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
 [node name="sight" type="Area2D" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 4, 4 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -242,11 +270,14 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
 
+transform/pos = Vector2( 4, 4 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="movement_speed" type="Node" parent="attributes"]
 
@@ -264,6 +295,22 @@ max_value = 100.0
 multiplier = 1.0
 addition = 0.0
 
+[node name="damage" type="Node" parent="attributes"]
+
+script/script = ExtResource( 8 )
+value = 10.0
+max_value = 10.0
+multiplier = 1.0
+addition = 0.0
+
+[node name="attacks" type="Node" parent="."]
+
+[connection signal="body_enter" from="attack_range" to="StateMachine/Seeking" method="attack_range_body_enter"]
+
+[connection signal="body_exit" from="attack_range" to="StateMachine/Attacking" method="body_exit"]
+
 [connection signal="body_enter" from="sight" to="." method="on_body_enter"]
+
+[connection signal="body_exit" from="sight" to="StateMachine/Seeking" method="body_exit"]
 
 
