@@ -2,7 +2,15 @@ extends Node
 
 signal timer_end
 
-var totalCards = 10
+enum TYPE{
+	combat = 1,
+	greedy = 2,
+	maze = 3,
+	puzzle = 4,
+	trap = 5
+}
+
+var totalCards = 5
 var card
 var time = 1
 
@@ -41,7 +49,16 @@ func FlipCard(card):
 	card.get_node("AnimationPlayer").connect("finished", self, "FlipSprite", card)
 	
 func FlipSprite(card):
-	card.get_child(0).set_texture(cardCombat)
+	if(card.cardType == TYPE.combat):
+		card.get_child(0).set_texture(cardCombat)
+	elif(card.cardType == TYPE.greedy):
+		card.get_child(0).set_texture(cardCombat)
+	elif(card.cardType == TYPE.maze):
+		card.get_child(0).set_texture(cardCombat)
+	elif(card.cardType == TYPE.puzzle):
+		card.get_child(0).set_texture(cardCombat)
+	elif(card.cardType == TYPE.trap):
+		card.get_child(0).set_texture(cardCombat)
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")
