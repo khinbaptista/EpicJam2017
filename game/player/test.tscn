@@ -1,12 +1,27 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=3]
 
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node2D
+
+func get_path(from, to):
+	return get_node(\"Navigation2D\").get_simple_path(from, to)
+"
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = Vector2Array( 246.992, -197.085, 244.776, 182.971, 192.698, 246.129, 85.2186, 122.029, 24.2767, -44.1761, 187.158, -241.406, -200.654, -238.082, -83.2025, -79.6332, -236.111, -188.221, -84.3106, 116.489, -192.898, 241.697, -243.868, 185.187 )
+polygons = [ IntArray( 0, 1, 2, 3, 4, 5 ), IntArray( 6, 5, 4, 7, 8 ), IntArray( 9, 3, 2, 10, 11 ), IntArray( 11, 8, 7, 9 ) ]
+outlines = [ Vector2Array( -236.111, -188.221, -243.868, 185.187, -192.898, 241.697, 192.698, 246.129, 244.776, 182.971, 246.992, -197.085, 187.158, -241.406, -200.654, -238.082 ), Vector2Array( -83.2025, -79.6332, -84.3106, 116.489, 85.2186, 122.029, 24.2767, -44.1761 ) ]
+
 [node name="Node2D" type="Node2D"]
 
 transform/pos = Vector2( 513.02, 278.117 )
+script/script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -21,5 +36,13 @@ transform/pos = Vector2( -130.856, -132.072 )
 [node name="Enemy1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 111.911, 42.1053 )
+level_path = NodePath("..")
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+
+navpoly = SubResource( 1 )
+enabled = true
 
 
