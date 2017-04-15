@@ -6,26 +6,42 @@ var totalCards = 10
 var card
 var time = 1
 
+var cardBack
+var cardCombat
+
 func _ready():
 	card = preload("res://cards/Card.tscn")
+	cardBack = preload("res://cards/cardBack.png")
+	cardCombat = preload("res://cards/cardCombat.png")
 
 	var cards = []
 	
 	var i
-	var y = 0;
+	var y = 60;
 	for i in range(totalCards):
 		var newCard 
 		newCard = card.instance()
 		newCard.set_pos(Vector2(y, 100))
+		newCard.get_child(0).set_scale(Vector2(0.15, 0.15))
+		newCard.get_child(0).set_texture(cardBack)
 		newCard.cardType = randi()%(totalCards + 1) + 1
 		cards.append(newCard)
 		AnimateCard(newCard)
 		add_child(newCard)
+		_create_timer(newCard, time + 5, true, "playFlip")	
+		newCard.connect("finished_flip", self, "FlipSprite", [newCard])
 		y += 100
 		
 func AnimateCard(card):
 	_create_timer(card, time, true, "playAnim")	
 	time += 1
+	
+func FlipCard(card):
+	card.playFlip()
+	card.get_node("AnimationPlayer").connect("finished", self, "FlipSprite", card)
+	
+func FlipSprite(card):
+	card.get_child(0).set_texture(cardCombat)
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")
