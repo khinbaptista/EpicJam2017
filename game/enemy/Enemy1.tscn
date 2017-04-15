@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
 [ext_resource path="res://enemy/enemySM.gd" type="Script" id=3]
+[ext_resource path="res://player/light.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -177,6 +178,7 @@ autoplay = ""
 
 [node name="StateMachine" type="Node" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -184,5 +186,27 @@ script/script = ExtResource( 3 )
 [node name="Seeking" type="Node" parent="StateMachine"]
 
 [node name="Attacking" type="Node" parent="StateMachine"]
+
+[node name="Light2D" type="Light2D" parent="."]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 4 )
+offset = Vector2( 0, 0 )
+scale = 5.0
+color = Color( 0.520934, 0.172653, 0.605469, 1 )
+energy = 5.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 
