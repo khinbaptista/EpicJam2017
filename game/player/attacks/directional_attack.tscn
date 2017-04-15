@@ -65,6 +65,7 @@ speed = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 flip_v = true

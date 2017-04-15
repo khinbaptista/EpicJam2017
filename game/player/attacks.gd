@@ -5,10 +5,13 @@ export(PackedScene) var directional_attack
 export(PackedScene) var ranged_attack
 var damage_attr
 
+var anim_player
+
 onready var player = get_parent()
 
 func _ready():
 	damage_attr = get_node("../attributes/damage")
+	anim_player = get_parent().get_node("AnimationPlayer")
 	set_process_input(true)
 
 func _input(event):
@@ -16,7 +19,6 @@ func _input(event):
 		var attack = surround_attack.instance()
 		attack.set_global_pos(player.get_global_pos())
 		attack.damage = damage_attr.value
-		var anim_player = get_parent().get_node("AnimationPlayer")
 		anim_player.play("area_attack")
 		add_child(attack)
 	
@@ -25,6 +27,7 @@ func _input(event):
 		attack.set_global_pos(player.get_global_pos())
 		attack.set_global_rot(player.get_global_rot())
 		attack.damage = damage_attr.value
+		anim_player.play("melee_attack")
 		add_child(attack)
 		
 	if event.is_action_pressed("attack_ranged") and not event.is_echo():
