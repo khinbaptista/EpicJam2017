@@ -30,7 +30,9 @@ func _fixed_process(delta):
 	if(!anim_player.is_playing()):
 		anim_player.play("movement")
 	
-	if movement == Vector2(): return
+	if movement == Vector2(): 
+		
+		return
 	
 	movement = movement.normalized()
 	
