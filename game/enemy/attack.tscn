@@ -87,4 +87,6 @@ shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
 
+[connection signal="body_enter" from="." to="." method="on_body_enter"]
+
 

@@ -39,4 +39,5 @@ func _input(event):
 		attack.set_global_pos(player.get_global_pos())
 		attack.set_global_rot(player.get_global_rot())
 		attack.damage = damage_attr.value
+		anim_player.play("melee_attack")
 		add_child(attack)

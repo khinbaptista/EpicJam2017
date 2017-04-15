@@ -81,15 +81,15 @@ func attack(target):
 	get_node("attacks").add_child(attack_node)
 
 signal death
-
 func hit(damage):
 	var health = get_node("attributes/health")
 	health.value -= damage
 	
+	printt("Enemy hit!", health.value)
+	
 	if health.value == 0:
 		emit_signal("death")
 		queue_free()
-	
 
 func on_body_enter(body):
 	if body extends PlayerClass:
