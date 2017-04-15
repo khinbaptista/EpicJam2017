@@ -15,6 +15,10 @@ func _ready():
 	set_process_input(true)
 
 func _input(event):
+	
+	if(anim_player.is_playing() && anim_player.get_current_animation().ends_with("attack")):
+		return;
+	
 	if event.is_action_pressed("attack_melee_surround") and not event.is_echo():
 		var attack = surround_attack.instance()
 		attack.set_global_pos(player.get_global_pos())
