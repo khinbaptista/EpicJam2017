@@ -1,11 +1,14 @@
 extends Node2D
 
 export(String) var sceneName1 = "res://scenes/scenePH.png"
-export(String) var sceneName2 = "res://scenes/text.png"
+export(String) var sceneName2 = "res://scenes/textPH.png"
 export(String) var sceneName3 = "res://scenes/scenePH.png"
-export(float) var sceneTime = 20
+export(float) var sceneTime = 5
 
 var currentScene
+var nextScene
+var currentSprite
+var nextSprite
 
 var sprite
 var sprite2
@@ -26,6 +29,9 @@ func _ready():
 	centerY = viewportRect.size.y / 2
 	
 	currentScene = load(sceneName1)
+	nextScene = load(sceneName2)
+	currentSprite = sprite
+	nextSprite = sprite2
 	
 	scaleX = viewportRect.size.x / currentScene.size.x
 	scaleY = viewportRect.size.y / currentScene.size.y
@@ -36,33 +42,35 @@ func _ready():
 	
 	sprite2.hide()
 	fade_out(sprite2)
-	sprite2.set_texture(currentScene)
+	sprite2.set_texture(nextScene)
 	sprite2.set_scale(Vector2(scaleX, scaleY))
 	sprite2.set_pos(Vector2(centerX, centerY))
-	set_fixed_process(true)
+	#set_fixed_process(true)
 	
 func _fixed_process(delta):
 	globalTimer += delta
-	if(globalTimer % sceneTime == 0):
-		nextScene()
+	if(globalTimer > sceneTime):
+		globalTimer = 0
+		loadNext()
 		
-func nextScene():
-	pass
+func loadNext():
+	swapScene(currentSprite, nextSprite)
+	currentSprite = nextSprite
 	
 func swapScene(obj1, obj2):
-	if(obj2.is_hidden()):
-		obj2.show()
 	fade_out(obj1)
 	fade_in(obj2)
 	
 func fade_out(obj):
 	var t = Tween.new()
 	add_child(t)
-	t.interpolate_property(obj, "visibility/opacity", 1, 0, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	t.interpolate_property(obj, "visibility/opacity", 1, 0, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	t.start()
 	
 func fade_in(obj):
+	if(sprite2.is_hidden()):
+		sprite2.show()
 	var t = Tween.new()
 	add_child(t)
-	t.interpolate_property(obj, "visibility/opacity", 0, 1, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	t.interpolate_property(obj, "visibility/opacity", 0, 1, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	t.start()

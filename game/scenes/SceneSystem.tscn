@@ -6,9 +6,9 @@
 
 script/script = ExtResource( 1 )
 sceneName1 = "res://scenes/scenePH.png"
-sceneName2 = "res://scenes/scenePH.png"
+sceneName2 = "res://scenes/textPH.png"
 sceneName3 = "res://scenes/scenePH.png"
-sceneTime = 20
+sceneTime = 5
 
 [node name="FirstSprite" type="Sprite" parent="."]
 
