@@ -70,13 +70,15 @@ func _fixed_process(delta):
 		swapScene()
 		
 func loadNext():
-	if(i < scenes.size() + 1):
+	if(i < scenes.size() - 1):
 		var aux = nextSprite
 		nextSprite = currentSprite
 		currentSprite = aux
 		i += 1
 		nextScene = load(scenes[i])
 		nextSprite.set_texture(nextScene)
+	else:
+		get_tree().change_scene("res://scenes/CardsScene.tscn")
 	
 func swapScene():
 	if(first):

@@ -10,7 +10,8 @@ enum TYPE{
 	trap = 5
 }
 
-var totalCards = 5
+var totalCards = 3
+var totalTypes = 5
 var card
 var time = 1
 
@@ -33,22 +34,28 @@ func _ready():
 	var cards = []
 	
 	var i
-	var y = 60;
+	var x = 220;
+	var typesSorted = []
 	for i in range(totalCards):
 		var newCard 
 		newCard = card.instance()
-		newCard.set_pos(Vector2(y, 100))
-		newCard.get_child(0).set_scale(Vector2(0.15, 0.15))
+		newCard.set_pos(Vector2(x, 120))
+		newCard.get_child(0).set_scale(Vector2(0.25, 0.25))
 		newCard.get_child(0).set_texture(cardBack)
 		randomize()
-		var randomType = randi()%(totalCards) + 1
+		var randomType = randi()%(totalTypes) + 1
+		while(typesSorted.has(randomType)):
+			randomize()
+			randomType = randi()%(totalTypes) + 1
+		print(randomType)
+		typesSorted.append(randomType)
 		newCard.cardType = randomType
 		cards.append(newCard)
 		AnimateCard(newCard)
 		add_child(newCard)
 		_create_timer(newCard, time + 5, true, "playFlip")	
 		newCard.connect("finished_flip", self, "FlipSprite", [newCard])
-		y += 100
+		x += 250
 		
 func AnimateCard(card):
 	_create_timer(card, time, true, "playAnim")	
