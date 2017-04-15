@@ -22,6 +22,10 @@ var cardMaze
 var cardPuzzle
 var cardTrap
 
+var typesSorted = []
+
+var totalFlipped = 0
+
 func _ready():
 	card = preload("res://cards/Card.tscn")
 	cardBack = preload("res://cards/cardBack.png")
@@ -35,7 +39,6 @@ func _ready():
 	
 	var i
 	var x = 220;
-	var typesSorted = []
 	for i in range(totalCards):
 		var newCard 
 		newCard = card.instance()
@@ -66,6 +69,7 @@ func FlipCard(card):
 	card.get_node("AnimationPlayer").connect("finished", self, "FlipSprite", card)
 	
 func FlipSprite(card):
+	totalFlipped += 1
 	if(card.cardType == TYPE.combat):
 		card.get_child(0).set_texture(cardCombat)
 	elif(card.cardType == TYPE.greedy):
@@ -76,6 +80,13 @@ func FlipSprite(card):
 		card.get_child(0).set_texture(cardPuzzle)
 	elif(card.cardType == TYPE.trap):
 		card.get_child(0).set_texture(cardTrap)
+		
+	if(totalFlipped == totalCards):
+		var data = get_node("/root/ScenesData")
+		data.first = typesSorted[0]
+		data.second = typesSorted[1]
+		data.third = typesSorted[2]
+		data.loadNextScene()
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")
