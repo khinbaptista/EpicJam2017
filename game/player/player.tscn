@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/circle.png" type="Texture" id=2]
 [ext_resource path="res://gameplay/attribute.gd" type="Script" id=3]
 [ext_resource path="res://player/movement.gd" type="Script" id=4]
+[ext_resource path="res://player/dash.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -34,6 +35,8 @@ _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="health" type="Node" parent="attributes"]
 
 script/script = ExtResource( 3 )
@@ -55,5 +58,11 @@ addition = 0.0
 [node name="movement" type="Node" parent="."]
 
 script/script = ExtResource( 4 )
+
+[node name="dash" type="Node" parent="."]
+
+script/script = ExtResource( 5 )
+distance = 150.0
+duration = 0.1
 
 

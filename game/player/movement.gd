@@ -20,5 +20,8 @@ func _fixed_process(delta):
 	if Input.is_action_pressed("move_right"):
 		movement.x += 1.0
 	
+	if movement == Vector2(): return
+	
 	movement = movement.normalized()
+	player.look_at(player.get_pos() + movement)
 	player.move(movement * movement_attr.value * delta)
