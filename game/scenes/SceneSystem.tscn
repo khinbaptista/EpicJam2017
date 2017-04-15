@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://scenes/SceneManager.gd" type="Script" id=1]
+
+[node name="SceneSystem" type="Node2D"]
+
+script/script = ExtResource( 1 )
+sceneName1 = "res://scenes/scenePH.png"
+sceneName2 = "res://scenes/textPH.png"
+sceneName3 = "res://scenes/scenePH.png"
+sceneTime = 5
+
+[node name="FirstSprite" type="Sprite" parent="."]
+
+[node name="SecondSprite" type="Sprite" parent="."]
+
+
