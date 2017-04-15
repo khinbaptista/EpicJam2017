@@ -197,9 +197,9 @@ time_len = 0.175
 [node name="Particles2D" type="Particles2D" parent="Body"]
 
 transform/pos = Vector2( -252.126, 78.3306 )
-transform/scale = Vector2( 2, 2 )
-config/amount = 30
-config/lifetime = 0.75
+transform/scale = Vector2( 2.5, 2.5 )
+config/amount = 50
+config/lifetime = 0.5
 config/emitting = false
 config/process_mode = 1
 config/texture = ExtResource( 3 )
