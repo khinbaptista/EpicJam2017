@@ -87,9 +87,7 @@ func swapScene():
 		first = true
 	
 func first_to_second():
-	get_child(2).play("fade_in_second")
-	get_child(2).play("fade_out_first")
+	get_child(2).play("first_to_second")
 	
 func second_to_first():
-	get_child(2).play("fade_in_first")
-	get_child(2).play("fade_out_second")
+	get_child(2).play("second_to_first")
