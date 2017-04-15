@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var fsm = null;
 var particle = null;
 var anim_player = null;
@@ -11,23 +7,22 @@ var dir = Vector2(0,0);
 
 export(float, 0, 1000, 2) var speed = 10;
 
+export(NodePath) var level_path
+onready var level = get_node(level_path)
+
+onready var PlayerClass = preload("res://player/player.gd")
+
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	set_process(true);
 	particle = get_node("Particles2D");
 	anim_player = get_node("AnimationPlayer");
 	fsm = get_node("StateMachine");
-	pass
 	
 func _process(delta):
 	process_input();
 	move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
 	handle_fsm();
-	
-	
-	pass
 	
 func handle_fsm():
 	if(!anim_player.is_playing()):
@@ -36,12 +31,10 @@ func handle_fsm():
 	var anim_name = anim_player.get_current_animation();
 	var anim_pos = anim_player.get_current_animation_pos();
 	if(anim_name == "attack"):
-		if(anim_pos > 0 && anim_pos < 0.99):
-			fsm.emit_signal("attack");
+		if(anim_pos > 0 && anim_pos < 2.5):
+			fsm.set_current_state("Attacking")
 		else:
-			fsm.emit_signal("idle");
-		
-	pass
+			fsm.set_current_state("Idle")
 	
 func process_input():
 	dir = Vector2(0,0);
@@ -59,10 +52,11 @@ func process_input():
 	
 	dir = dir.normalized();
 	
-	pass
-	
 var lerp_w = 0;
 func process_particles(dir, delta):
+
+	if(fsm.current_state.name == "Attacking"):
+		return;
 
 	if(dir.length() > 0):
 		if(lerp_w > 0.05):
@@ -76,8 +70,10 @@ func process_particles(dir, delta):
 	particle.set_param(particle.PARAM_LINEAR_VELOCITY, lerp(100, 300, lerp_w));
 	particle.set_param(particle.PARAM_ORBIT_VELOCITY, lerp(0, 5, lerp_w));
 	
-	pass
-	
 func attack():
 	anim_player.play("attack");
-	pass
+
+func on_body_enter(body):
+	if body extends PlayerClass:
+		fsm.get_node("Seeking").target = body
+		fsm.make_transition("seek")
