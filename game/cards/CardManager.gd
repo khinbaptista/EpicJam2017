@@ -16,11 +16,19 @@ var time = 1
 
 var cardBack
 var cardCombat
+var cardGreedy
+var cardMaze
+var cardPuzzle
+var cardTrap
 
 func _ready():
 	card = preload("res://cards/Card.tscn")
 	cardBack = preload("res://cards/cardBack.png")
 	cardCombat = preload("res://cards/cardCombat.png")
+	cardGreedy = preload("res://cards/cardGreedy.png")
+	cardMaze = preload("res://cards/cardMaze.png")
+	cardPuzzle = preload("res://cards/cardPuzzle.png")
+	cardTrap = preload("res://cards/cardTrap.png")
 
 	var cards = []
 	
@@ -52,13 +60,13 @@ func FlipSprite(card):
 	if(card.cardType == TYPE.combat):
 		card.get_child(0).set_texture(cardCombat)
 	elif(card.cardType == TYPE.greedy):
-		card.get_child(0).set_texture(cardCombat)
+		card.get_child(0).set_texture(cardGreedy)
 	elif(card.cardType == TYPE.maze):
-		card.get_child(0).set_texture(cardCombat)
+		card.get_child(0).set_texture(cardMaze)
 	elif(card.cardType == TYPE.puzzle):
-		card.get_child(0).set_texture(cardCombat)
+		card.get_child(0).set_texture(cardPuzzle)
 	elif(card.cardType == TYPE.trap):
-		card.get_child(0).set_texture(cardCombat)
+		card.get_child(0).set_texture(cardTrap)
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")
