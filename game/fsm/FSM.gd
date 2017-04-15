@@ -2,6 +2,7 @@ extends Node
 
 var current_state
 var states = {} setget ,get_states
+var NodeClass = preload("state.gd")
 
 signal state_locked(state)
 signal state_changed(state_name)
@@ -9,7 +10,7 @@ signal state_changed(state_name)
 func _ready():
 	var children = get_children()
 	for child in children:
-		if child extends "state.gd":
+		if child extends NodeClass:
 			add_state(child.get_name(), child)
 
 func add_state(name, state):
