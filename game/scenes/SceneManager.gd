@@ -2,7 +2,7 @@ extends Node2D
 
 export(String) var sceneName1 = "res://scenes/scenePH.png"
 export(String) var sceneName2 = "res://scenes/textPH.png"
-export(String) var sceneName3 = "res://scenes/scenePH.png"
+export(String) var sceneName3 = ""
 export(float) var sceneTime = 5
 
 var currentScene
@@ -17,6 +17,7 @@ var centerX
 var centerY
 var scaleX
 var scaleY
+var i = 2
 
 var globalTimer = 0
 
@@ -45,7 +46,7 @@ func _ready():
 	sprite2.set_texture(nextScene)
 	sprite2.set_scale(Vector2(scaleX, scaleY))
 	sprite2.set_pos(Vector2(centerX, centerY))
-	#set_fixed_process(true)
+	set_fixed_process(true)
 	
 func _fixed_process(delta):
 	globalTimer += delta
@@ -56,6 +57,7 @@ func _fixed_process(delta):
 func loadNext():
 	swapScene(currentSprite, nextSprite)
 	currentSprite = nextSprite
+	i += 1
 	
 func swapScene(obj1, obj2):
 	fade_out(obj1)
