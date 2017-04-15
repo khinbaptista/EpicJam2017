@@ -35,7 +35,7 @@ editor/display_folded = true
 transform/pos = Vector2( 0, 284.632 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 3.65791, 0, 0, 4.4919, 8.10297, 2.19551 )
+shapes/0/transform = Matrix32( 3.65791, 0, 0, 8.8724, 8.10297, 347.613 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -46,8 +46,8 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
 
-transform/pos = Vector2( 8.10297, 2.19551 )
-transform/scale = Vector2( 3.65791, 4.4919 )
+transform/pos = Vector2( 8.10297, 347.613 )
+transform/scale = Vector2( 3.65791, 8.8724 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -59,7 +59,7 @@ transform/pos = Vector2( 530.558, 596.193 )
 transform/rot = 90.0
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 5.06641, 0, 0, 6.7666, -3.09515, -8.1225 )
+shapes/0/transform = Matrix32( 5.06641, 0, 0, 12.2173, -692.9, 424.2 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -70,8 +70,8 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="down_wall"]
 
-transform/pos = Vector2( -3.09515, -8.1225 )
-transform/scale = Vector2( 5.06641, 6.7666 )
+transform/pos = Vector2( -692.9, 424.2 )
+transform/scale = Vector2( 5.06641, 12.2173 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
@@ -82,7 +82,7 @@ editor/display_folded = true
 transform/pos = Vector2( 1015.38, 281.843 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 3.65791, 0, 0, 4.4919, 8.10297, 2.19551 )
+shapes/0/transform = Matrix32( 3.65791, 0, 0, 8.62949, 860.876, 372.981 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -93,15 +93,16 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
 
-transform/pos = Vector2( 8.10297, 2.19551 )
-transform/scale = Vector2( 3.65791, 4.4919 )
+transform/pos = Vector2( 860.876, 372.981 )
+transform/scale = Vector2( 3.65791, 8.62949 )
 shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
 [node name="square_obstacle" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 185.39, 156.997 )
+transform/pos = Vector2( 534.719, 201.013 )
+transform/scale = Vector2( 1, 6.33541 )
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -123,13 +124,37 @@ _update_shape_index = 0
 
 texture = ExtResource( 1 )
 
+[node name="square_obstacle1" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 413.626, 393.308 )
+transform/scale = Vector2( 2.8577, 1 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="square_obstacle1"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Sprite" type="Sprite" parent="square_obstacle1"]
+
+texture = ExtResource( 1 )
+
 [node name="upper_wall" type="StaticBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 490.919, 2.51754 )
 input/pickable = false
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Matrix32( -2.2146e-07, -5.06641, 6.7666, -2.95778e-07, 26.2094, -4.06244 )
+shapes/0/transform = Matrix32( -2.2146e-07, -5.06641, 12.2886, -5.37152e-07, 461.639, -4.06246 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -140,9 +165,9 @@ bounce = 0.0
 
 [node name="CollisionShape2D1" type="CollisionShape2D" parent="upper_wall"]
 
-transform/pos = Vector2( 26.2094, -4.06244 )
+transform/pos = Vector2( 461.639, -4.06246 )
 transform/rot = 90.0
-transform/scale = Vector2( 5.06641, 6.7666 )
+transform/scale = Vector2( 5.06641, 12.2886 )
 shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
