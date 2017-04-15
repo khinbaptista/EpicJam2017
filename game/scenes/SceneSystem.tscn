@@ -1,17 +1,202 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scenes/SceneManager.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "fade_in_first"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FirstSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "fade_in_second"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SecondSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "fade_out_first"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FirstSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 3 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "loadNext"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "fade_out_second"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SecondSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 3 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "loadNext"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "first_to_second"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("FirstSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SecondSprite:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 3 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "loadNext"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "second_to_first"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SecondSprite:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.6, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FirstSprite:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 3 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 3 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "loadNext"
+} ]
+}
 
 [node name="SceneSystem" type="Node2D"]
 
 script/script = ExtResource( 1 )
-sceneName1 = "res://scenes/scenePH.png"
-sceneName2 = "res://scenes/textPH.png"
-sceneName3 = "res://scenes/scenePH.png"
 sceneTime = 5
 
 [node name="FirstSprite" type="Sprite" parent="."]
 
 [node name="SecondSprite" type="Sprite" parent="."]
+
+visibility/opacity = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/fade_in_first = SubResource( 1 )
+anims/fade_in_second = SubResource( 2 )
+anims/fade_out_first = SubResource( 3 )
+anims/fade_out_second = SubResource( 4 )
+anims/first_to_second = SubResource( 5 )
+anims/second_to_first = SubResource( 6 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 

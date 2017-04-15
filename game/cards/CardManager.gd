@@ -10,7 +10,8 @@ enum TYPE{
 	trap = 5
 }
 
-var totalCards = 5
+var totalCards = 3
+var totalTypes = 5
 var card
 var time = 1
 
@@ -20,6 +21,10 @@ var cardGreedy
 var cardMaze
 var cardPuzzle
 var cardTrap
+
+var typesSorted = []
+
+var totalFlipped = 0
 
 func _ready():
 	card = preload("res://cards/Card.tscn")
@@ -33,22 +38,27 @@ func _ready():
 	var cards = []
 	
 	var i
-	var y = 60;
+	var x = 220;
 	for i in range(totalCards):
 		var newCard 
 		newCard = card.instance()
-		newCard.set_pos(Vector2(y, 100))
-		newCard.get_child(0).set_scale(Vector2(0.15, 0.15))
+		newCard.set_pos(Vector2(x, 120))
+		newCard.get_child(0).set_scale(Vector2(0.25, 0.25))
 		newCard.get_child(0).set_texture(cardBack)
 		randomize()
-		var randomType = randi()%(totalCards) + 1
+		var randomType = randi()%(totalTypes) + 1
+		while(typesSorted.has(randomType)):
+			randomize()
+			randomType = randi()%(totalTypes) + 1
+		print(randomType)
+		typesSorted.append(randomType)
 		newCard.cardType = randomType
 		cards.append(newCard)
 		AnimateCard(newCard)
 		add_child(newCard)
 		_create_timer(newCard, time + 5, true, "playFlip")	
 		newCard.connect("finished_flip", self, "FlipSprite", [newCard])
-		y += 100
+		x += 250
 		
 func AnimateCard(card):
 	_create_timer(card, time, true, "playAnim")	
@@ -59,6 +69,7 @@ func FlipCard(card):
 	card.get_node("AnimationPlayer").connect("finished", self, "FlipSprite", card)
 	
 func FlipSprite(card):
+	totalFlipped += 1
 	if(card.cardType == TYPE.combat):
 		card.get_child(0).set_texture(cardCombat)
 	elif(card.cardType == TYPE.greedy):
@@ -69,6 +80,13 @@ func FlipSprite(card):
 		card.get_child(0).set_texture(cardPuzzle)
 	elif(card.cardType == TYPE.trap):
 		card.get_child(0).set_texture(cardTrap)
+		
+	if(totalFlipped == totalCards):
+		var data = get_node("/root/ScenesData")
+		data.first = typesSorted[0]
+		data.second = typesSorted[1]
+		data.third = typesSorted[2]
+		data.loadNextScene()
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")

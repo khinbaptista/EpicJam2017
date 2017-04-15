@@ -1,8 +1,7 @@
 extends Node2D
 
-export(String) var sceneName1 = "res://scenes/scenePH.png"
-export(String) var sceneName2 = "res://scenes/textPH.png"
-export(String) var sceneName3 = ""
+var scenes = []
+
 export(float) var sceneTime = 5
 
 var currentScene
@@ -21,7 +20,23 @@ var i = 2
 
 var globalTimer = 0
 
+var first = true
+
 func _ready():
+	scenes.append("res://scenes/Text1.png")
+	scenes.append("res://scenes/Text2.png")
+	scenes.append("res://scenes/Text3.png")
+	scenes.append("res://scenes/Text4.png")
+	scenes.append("res://scenes/Text5.png")
+	scenes.append("res://scenes/Text6.png")
+	scenes.append("res://scenes/Text7.png")
+	scenes.append("res://scenes/Text8.png")
+	scenes.append("res://scenes/Text9.png")
+	scenes.append("res://scenes/Text10.png")
+	scenes.append("res://scenes/Text11.png")
+	scenes.append("res://scenes/Text12.png")
+	scenes.append("res://scenes/Text13.png")
+	
 	var viewportRect = get_viewport_rect()
 	sprite = get_child(0)
 	sprite2 = get_child(1)
@@ -29,8 +44,9 @@ func _ready():
 	centerX = viewportRect.size.x / 2
 	centerY = viewportRect.size.y / 2
 	
-	currentScene = load(sceneName1)
-	nextScene = load(sceneName2)
+	currentScene = load(scenes[0])
+	nextScene = load(scenes[1])
+	
 	currentSprite = sprite
 	nextSprite = sprite2
 	
@@ -41,38 +57,39 @@ func _ready():
 	sprite.set_scale(Vector2(scaleX, scaleY))
 	sprite.set_pos(Vector2(centerX, centerY))
 	
-	sprite2.hide()
-	fade_out(sprite2)
 	sprite2.set_texture(nextScene)
 	sprite2.set_scale(Vector2(scaleX, scaleY))
 	sprite2.set_pos(Vector2(centerX, centerY))
+	
 	set_fixed_process(true)
 	
 func _fixed_process(delta):
 	globalTimer += delta
 	if(globalTimer > sceneTime):
 		globalTimer = 0
-		loadNext()
+		swapScene()
 		
 func loadNext():
-	swapScene(currentSprite, nextSprite)
-	currentSprite = nextSprite
-	i += 1
+	if(i < scenes.size() - 1):
+		var aux = nextSprite
+		nextSprite = currentSprite
+		currentSprite = aux
+		i += 1
+		nextScene = load(scenes[i])
+		nextSprite.set_texture(nextScene)
+	else:
+		get_tree().change_scene("res://scenes/CardsScene.tscn")
 	
-func swapScene(obj1, obj2):
-	fade_out(obj1)
-	fade_in(obj2)
+func swapScene():
+	if(first):
+		first_to_second()
+		first = false
+	else:
+		second_to_first()
+		first = true
 	
-func fade_out(obj):
-	var t = Tween.new()
-	add_child(t)
-	t.interpolate_property(obj, "visibility/opacity", 1, 0, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	t.start()
+func first_to_second():
+	get_child(2).play("first_to_second")
 	
-func fade_in(obj):
-	if(sprite2.is_hidden()):
-		sprite2.show()
-	var t = Tween.new()
-	add_child(t)
-	t.interpolate_property(obj, "visibility/opacity", 0, 1, 4, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	t.start()
+func second_to_first():
+	get_child(2).play("second_to_first")
