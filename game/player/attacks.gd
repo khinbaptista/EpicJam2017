@@ -16,6 +16,8 @@ func _input(event):
 		var attack = surround_attack.instance()
 		attack.set_global_pos(player.get_global_pos())
 		attack.damage = damage_attr.value
+		var anim_player = get_parent().get_node("AnimationPlayer")
+		anim_player.play("area_attack")
 		add_child(attack)
 	
 	if event.is_action_pressed("attack_melee_directional") and not event.is_echo():

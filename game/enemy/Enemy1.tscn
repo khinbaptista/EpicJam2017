@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
 [ext_resource path="res://enemy/enemySM.gd" type="Script" id=3]
+[ext_resource path="res://enemy/idle.gd" type="Script" id=4]
+[ext_resource path="res://enemy/seek.gd" type="Script" id=5]
+[ext_resource path="res://enemy/attack.gd" type="Script" id=6]
+[ext_resource path="res://player/light.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -70,6 +74,11 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0.257813, 0.257813, 1 ), Color( 1, 0.285156, 0.285156, 1 ), Color( 0, 0, 0, 1 ) ]
 }
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 527.555
 
 [node name="Enemy1" type="KinematicBody2D"]
 
@@ -181,8 +190,61 @@ script/script = ExtResource( 3 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
 
+script/script = ExtResource( 4 )
+cooldown = 0
+
 [node name="Seeking" type="Node" parent="StateMachine"]
 
+script/script = ExtResource( 5 )
+cooldown = 0
+
 [node name="Attacking" type="Node" parent="StateMachine"]
+
+script/script = ExtResource( 6 )
+cooldown = 0
+
+[node name="Light2D" type="Light2D" parent="."]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 7 )
+offset = Vector2( 0, 0 )
+scale = 5.0
+color = Color( 0.520934, 0.172653, 0.605469, 1 )
+energy = 5.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 1
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
+
+[node name="sight" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
+
+visibility/visible = false
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="sight" to="." method="on_body_enter"]
+
+[connection signal="body_exit" from="sight" to="StateMachine/Seeking" method="body_exit"]
 
 
