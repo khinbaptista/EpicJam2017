@@ -178,7 +178,6 @@ script/script = ExtResource( 1 )
 
 [node name="Body" type="Sprite" parent="."]
 
-visibility/self_opacity = 0.15
 transform/pos = Vector2( 0.35849, -0.35849 )
 transform/rot = 360.0
 transform/scale = Vector2( 0.150353, 0.150353 )
