@@ -7,7 +7,7 @@ func _ready():
 
 func hit(damage):
 	var health = get_node("attributes/health")
-	health -= damage
+	health.value -= damage
 	
 	if health.value == 0:
 		emit_signal("death")

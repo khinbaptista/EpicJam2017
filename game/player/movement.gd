@@ -23,5 +23,5 @@ func _fixed_process(delta):
 	if movement == Vector2(): return
 	
 	movement = movement.normalized()
-	player.look_at(player.get_pos() + movement)
+	player.look_at(player.get_global_pos() + movement)
 	player.move(movement * movement_attr.value * delta)

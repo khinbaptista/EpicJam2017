@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+transform/pos = Vector2( 513.02, 278.117 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 7.72253, 7.72253 )
+texture = ExtResource( 1 )
+modulate = Color( 0.03125, 0.03125, 0.03125, 1 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+
+
