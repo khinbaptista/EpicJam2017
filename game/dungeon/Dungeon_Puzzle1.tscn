@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=15 format=1]
 
-[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=1]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dungeon/Key.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=6]
-[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://dungeon/level.gd" type="Script" id=1]
+[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dungeon/Key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -28,19 +30,26 @@ extents = Vector2( 2.12575, 75.8534 )
 custom_solver_bias = 0.0
 extents = Vector2( 2.12575, 75.8534 )
 
-[node name="Dungeon" type="Node2D"]
+[sub_resource type="NavigationPolygon" id=5]
+
+vertices = Vector2Array( 52.133, 46.8865, 425.958, 39.484, 413.004, 289.318, 292.714, 281.915, 53.9836, 609.475, 298.265, 478.081, 670.24, 607.624, 612.871, 459.575, 46.5811, 1246.09, 41.0292, 1148.01, 196.481, 1148.01, 1813.92, 1236.84, 1828.73, 465.127, 1182.86, 479.932, 1190.26, 117.21, 1810.22, 30.2309, 594.365, 30.2309, 1005.2, 113.509, 1003.35, 681.649, 659.136, 1131.35, 1453.05, 677.948, 1836.13, 690.902, 216.838, 1061.03, 450.016, 1057.33, 453.718, 1136.9 )
+polygons = [ IntArray( 0, 1, 2, 3 ), IntArray( 4, 0, 3, 5 ), IntArray( 6, 4, 5, 7 ), IntArray( 8, 9, 10, 11 ), IntArray( 12, 13, 14, 15 ), IntArray( 16, 15, 14, 17 ), IntArray( 7, 16, 17, 18, 6 ), IntArray( 19, 6, 18 ), IntArray( 20, 21, 11, 19, 18 ), IntArray( 22, 23, 24, 10 ), IntArray( 11, 10, 24, 19 ) ]
+outlines = [ Vector2Array( 425.958, 39.484, 52.133, 46.8865, 53.9836, 609.475, 670.24, 607.624, 659.136, 1131.35, 453.718, 1136.9, 450.016, 1057.33, 216.838, 1061.03, 196.481, 1148.01, 41.0292, 1148.01, 46.5811, 1246.09, 1813.92, 1236.84, 1836.13, 690.902, 1453.05, 677.948, 1003.35, 681.649, 1005.2, 113.509, 1190.26, 117.21, 1182.86, 479.932, 1828.73, 465.127, 1810.22, 30.2309, 594.365, 30.2309, 612.871, 459.575, 298.265, 478.081, 292.714, 281.915, 413.004, 289.318 ) ]
+
+[node name="Dungeon" type="Navigation2D"]
+
+script/script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 944.24, 644.013 )
 transform/scale = Vector2( 14.8142, 10.2644 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 802.348, 95.1801 )
-pushback = 20.0
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
@@ -135,33 +144,33 @@ shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Key" parent="." instance=ExtResource( 3 )]
+[node name="Key" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 163.176, 235.277 )
 
-[node name="Hole" parent="." instance=ExtResource( 4 )]
+[node name="Hole" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1655.08, 597.649 )
 transform/scale = Vector2( 8.20078, 1 )
 
-[node name="Hole1" parent="." instance=ExtResource( 4 )]
+[node name="Hole1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 553.78, 1075.23 )
 transform/scale = Vector2( 2.89593, 1.71239 )
 
-[node name="Hole2" parent="." instance=ExtResource( 4 )]
+[node name="Hole2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 94.8578, 1073.87 )
 transform/scale = Vector2( 2.89593, 1.64776 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1313.84, 1239.29 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 7 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -176,12 +185,47 @@ collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( -65529, 1, 65543, 1, 131088, 1, 196615, 1, 262160, 1, 327685, 1, 327687, 1, 393232, 1, 524304, 1, 524306, 1, 524308, 1, 655360, 1, 655362, 1, 655364, 1, 655366, 1, 655368, 1, 786432, 1, 786434, 1, 786436, 1, 786438, 1, 786440, 1, 917504, 1, 917506, 1, 917508, 1, 917510, 1, 917512, 1 )
 
-[node name="Item" parent="." instance=ExtResource( 7 )]
+[node name="Item" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 314.107, 1073.76 )
 
-[node name="Item1" parent="." instance=ExtResource( 7 )]
+[node name="Item1" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 1222.68, 454.285 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+
+navpoly = SubResource( 5 )
+enabled = true
+
+[node name="Enemy1" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 331.261, 133.245 )
+level_path = NodePath("..")
+
+[node name="Enemy2" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 111.037, 129.543 )
+level_path = NodePath("..")
+
+[node name="Enemy3" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 170.257, 405.286 )
+level_path = NodePath("..")
+
+[node name="Enemy4" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 773.559, 514.473 )
+level_path = NodePath("..")
+
+[node name="Enemy5" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 967.874, 1064.11 )
+level_path = NodePath("..")
+
+[node name="Enemy6" parent="." instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 1275.08, 830.929 )
+level_path = NodePath("..")
 
 
