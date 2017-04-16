@@ -67,7 +67,7 @@ tracks/4/keys = {
 "times": FloatArray( 0, 0.5, 2.3, 3 ),
 "transitions": FloatArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 0.238281, 0.238281, 1 ), Color( 1, 0.238281, 0.238281, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 1, 0.421875, 0.421875, 1 ), Color( 1, 0.238281, 0.238281, 1 ), Color( 1, 0.238281, 0.238281, 1 ), Color( 1, 0.503906, 0.503906, 1 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprite:modulate")
@@ -83,7 +83,7 @@ tracks/5/keys = {
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
-radius = 406.101
+radius = 548.226
 
 [sub_resource type="CircleShape2D" id=4]
 
@@ -101,7 +101,8 @@ collision/layers = 4
 collision/mask = 0
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-speed = 100.0
+speed = 60.0
+atk_delay = 1
 level_path = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -119,6 +120,7 @@ modulate = Color( 0, 0, 0, 1 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 
+visibility/blend_mode = 1
 config/amount = 74
 config/lifetime = 0.75
 config/process_mode = 1
@@ -141,7 +143,7 @@ params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 randomness/linear_velocity = 0.25
 randomness/orbit_velocity = 0.35
-color/color = Color( 0, 0, 0, 1 )
+color/color = Color( 1, 0.167969, 0.167969, 1 )
 
 [node name="attackparticle1" type="Particles2D" parent="."]
 
@@ -225,10 +227,11 @@ cooldown = 0
 
 script/script = ExtResource( 6 )
 cooldown = 0
-attack_cooldown = 0.5
+attack_cooldown = 2.0
 
 [node name="Light2D" type="Light2D" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( -1.7605, -1.7605 )
 enabled = true
 editor_only = false
@@ -236,7 +239,7 @@ texture = ExtResource( 7 )
 offset = Vector2( 0, 0 )
 scale = 5.0
 color = Color( 0.520934, 0.172653, 0.605469, 1 )
-energy = 5.0
+energy = 2.0
 mode = 0
 range/height = 0.0
 range/z_min = -1024
@@ -252,7 +255,6 @@ shadow/item_mask = 1
 
 [node name="attack_range" type="Area2D" parent="."]
 
-editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 3 )

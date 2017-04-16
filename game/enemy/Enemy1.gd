@@ -7,6 +7,10 @@ var dir = Vector2(0,0);
 
 export(float, 0, 1000, 2) var speed = 10;
 
+export(float, 0, 2, 0.1) var atk_delay = 1;
+var atkdelay_c = 0.0;
+var currAtk = null;
+
 export(NodePath) var level_path
 onready var level = get_node(level_path)
 
@@ -24,6 +28,10 @@ func _process(delta):
 	#move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
 	#handle_fsm();
+	if(atkdelay_c < atk_delay):
+		atkdelay_c += delta;
+		if(atkdelay_c >= atk_delay && currAtk != null):
+			currAtk.resume()
 	
 func handle_fsm():
 	if(!anim_player.is_playing()):
@@ -73,6 +81,7 @@ func process_particles(dir, delta):
 func attack(target):
 	look_at(target.get_global_pos())
 	anim_player.play("attack");
+	yield()
 	instance_attack(target)
 
 func instance_attack(target):

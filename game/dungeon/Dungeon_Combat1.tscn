@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
-[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://dungeon/dungeon_tilemap_shader.tres" type="CanvasItemMaterial" id=2]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=4]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -39,20 +40,43 @@ outlines = [ Vector2Array( 30.55, -3.3172, 30.55, 1305.4, 1736.88, 1300.85, 1736
 
 script/script = ExtResource( 1 )
 
+[node name="TileMap" type="TileMap" parent="."]
+
+material/material = ExtResource( 2 )
+transform/pos = Vector2( -6.10352e-05, 0 )
+mode = 0
+tile_set = ExtResource( 3 )
+cell/size = Vector2( 128, 128 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -1, 1, -65536, 0, -65535, 0, -65534, 0, -65533, 0, -65532, 1, -65531, 0, -65530, 0, -65529, 0, -65528, 0, -65527, 1, -65526, 0, -65525, 0, -65524, 0, -65523, 0, -65522, 13, 65535, 14, 0, 7, 1, 7, 2, 7, 3, 7, 4, 1, 5, 7, 6, 7, 7, 7, 8, 7, 9, 1, 10, 7, 11, 7, 12, 7, 13, 7, 14, 12, 131071, 14, 65536, 7, 65537, 7, 65538, 7, 65539, 7, 65540, 1, 65541, 7, 65542, 7, 65543, 7, 65544, 7, 65545, 1, 65546, 7, 65547, 7, 65548, 7, 65549, 7, 65550, 12, 196607, 14, 131072, 7, 131073, 7, 131074, 7, 131075, 7, 131076, 7, 131077, 7, 131078, 7, 131079, 7, 131080, 7, 131081, 7, 131082, 7, 131083, 7, 131084, 7, 131085, 7, 131086, 12, 262143, 14, 196608, 7, 196609, 7, 196610, 7, 196611, 7, 196612, 7, 196613, 7, 196614, 7, 196615, 7, 196616, 7, 196617, 7, 196618, 7, 196619, 7, 196620, 7, 196621, 7, 196622, 12, 327679, 14, 262144, 7, 262145, 7, 262146, 7, 262147, 7, 262148, 7, 262149, 7, 262150, 7, 262151, 7, 262152, 7, 262153, 7, 262154, 7, 262155, 7, 262156, 7, 262157, 7, 262158, 12, 393215, 14, 327680, 7, 327681, 1, 327682, 1, 327683, 7, 327684, 7, 327685, 7, 327686, 7, 327687, 7, 327688, 7, 327689, 7, 327690, 7, 327691, 1, 327692, 1, 327693, 7, 327694, 12, 458751, 14, 393216, 7, 393217, 1, 393218, 1, 393219, 7, 393220, 7, 393221, 7, 393222, 7, 393223, 7, 393224, 7, 393225, 7, 393226, 7, 393227, 1, 393228, 1, 393229, 7, 393230, 12, 524287, 14, 458752, 7, 458753, 7, 458754, 7, 458755, 7, 458756, 7, 458757, 7, 458758, 7, 458759, 7, 458760, 7, 458761, 7, 458762, 7, 458763, 7, 458764, 7, 458765, 7, 458766, 12, 589823, 14, 524288, 7, 524289, 7, 524290, 7, 524291, 7, 524292, 7, 524293, 7, 524294, 7, 524295, 7, 524296, 7, 524297, 7, 524298, 7, 524299, 7, 524300, 7, 524301, 7, 524302, 12, 655359, 14, 589824, 7, 589825, 7, 589826, 7, 589827, 7, 589828, 7, 589829, 7, 589830, 7, 589831, 7, 589832, 7, 589833, 7, 589834, 7, 589835, 7, 589836, 7, 589837, 7, 589838, 12, 720895, 14, 655360, 7, 655361, 7, 655362, 7, 655363, 7, 655364, 7, 655365, 7, 655366, 7, 655367, 7, 655368, 7, 655369, 7, 655370, 7, 655371, 7, 655372, 7, 655373, 7, 655374, 12, 786431, 15, 720896, 11, 720897, 11, 720898, 11, 720899, 11, 720900, 11, 720901, 11, 720902, 11, 720903, 11, 720904, 11, 720905, 11, 720906, 11, 720907, 11, 720908, 11, 720909, 11, 720910, 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 897.848, 642.212 )
-transform/scale = Vector2( 14.0768, 11.0346 )
-texture = ExtResource( 2 )
-modulate = Color( 0.0976563, 0.0976563, 0.0976563, 1 )
+visibility/visible = false
+transform/pos = Vector2( 896.047, 705.16 )
+transform/scale = Vector2( 16.0359, 13.0562 )
+texture = ExtResource( 4 )
+modulate = Color( 0, 0, 0, 1 )
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 0, 284.632 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 3.65791, 0, 0, 11.111, 8.10297, 518.971 )
+shapes/0/transform = Matrix32( 3.65791, 0, 0, 11.111, -3.89703, 518.971 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -63,7 +87,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
 
-transform/pos = Vector2( 8.10297, 518.971 )
+transform/pos = Vector2( -3.89703, 518.971 )
 transform/scale = Vector2( 3.65791, 11.111 )
 shape = SubResource( 1 )
 trigger = false
@@ -72,7 +96,7 @@ _update_shape_index = 0
 [node name="down_wall" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
-transform/pos = Vector2( 598.864, 577.219 )
+transform/pos = Vector2( 592.014, 655.989 )
 transform/rot = 90.0
 input/pickable = false
 shapes/0/shape = SubResource( 2 )
@@ -99,7 +123,7 @@ editor/display_folded = true
 transform/pos = Vector2( 1083.69, 262.869 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 3.65791, 0, 0, 8.83403, 684.67, 389.11 )
+shapes/0/transform = Matrix32( 3.65791, 0, 0, 9.51878, 700.63, 445.561 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -110,20 +134,16 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
 
-transform/pos = Vector2( 684.67, 389.11 )
-transform/scale = Vector2( 3.65791, 8.83403 )
+transform/pos = Vector2( 700.63, 445.561 )
+transform/scale = Vector2( 3.65791, 9.51878 )
 shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
 [node name="upper_wall" type="StaticBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 559.225, -16.4563 )
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
-shapes/0/transform = Matrix32( -2.59176e-07, -5.92926, 11.712, -5.11948e-07, 336.482, -12.28 )
-shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -131,80 +151,55 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D1" type="CollisionShape2D" parent="upper_wall"]
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 336.482, -12.28 )
+transform/pos = Vector2( 895.707, -16.7363 )
 transform/rot = 90.0
 transform/scale = Vector2( 5.92926, 11.712 )
 shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Hole7" parent="." instance=ExtResource( 3 )]
+[node name="Hole7" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896.525, 1233.26 )
 transform/rot = 90.0
 transform/scale = Vector2( 3.45063, 4.79266 )
 
-[node name="Hole10" parent="." instance=ExtResource( 3 )]
+[node name="Hole10" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 591.44, 501.548 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole15" parent="." instance=ExtResource( 3 )]
+[node name="Hole15" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1181.13, 492.82 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole11" parent="." instance=ExtResource( 3 )]
+[node name="Hole11" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 688.68, 593.124 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole12" parent="." instance=ExtResource( 3 )]
+[node name="Hole12" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 891.415, 686.569 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 5.87005 )
 
-[node name="Hole13" parent="." instance=ExtResource( 3 )]
+[node name="Hole13" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1082.54, 588.776 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 398.902, 1285.15 )
 is_open = true
-
-[node name="player" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 907.99, 79.2541 )
-
-[node name="TileMap" type="TileMap" parent="."]
-
-mode = 0
-tile_set = ExtResource( 6 )
-cell/size = Vector2( 128, 128 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 1
-collision/mask = 1
-occluder/light_mask = 1
-tile_data = IntArray( -65532, 1, -65527, 1, 4, 1, 9, 1, 65540, 1, 65545, 1, 327681, 1, 327682, 1, 327691, 1, 327692, 1, 393217, 1, 393218, 1, 393227, 1, 393228, 1, 458758, 1, 458759, 1, 524294, 1, 524295, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Item1" parent="." instance=ExtResource( 7 )]
 
@@ -221,31 +216,37 @@ transform/pos = Vector2( 1460.95, 1245.97 )
 [node name="Enemy1" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 184.038, 361.26 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy2" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 1560.92, 383.981 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy3" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 1508.66, 1008.8 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy4" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 224.936, 1008.8 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy5" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 890.654, 461.231 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy6" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 618.005, 356.716 )
+speed = 40.0
 level_path = NodePath("..")
 
 [node name="Enemy7" parent="." instance=ExtResource( 8 )]
@@ -257,5 +258,10 @@ level_path = NodePath("..")
 
 navpoly = SubResource( 5 )
 enabled = true
+
+[node name="player" parent="." instance=ExtResource( 9 )]
+
+visibility/visible = false
+transform/pos = Vector2( 907.99, 79.2541 )
 
 

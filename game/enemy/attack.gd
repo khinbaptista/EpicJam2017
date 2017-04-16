@@ -8,14 +8,15 @@ var target
 
 func on_enter():
 	.on_enter()
-	attack_timer = 0.0
+	attack_timer = attack_cooldown
 	set_process(true)
 
 func _process(delta):
 	attack_timer += delta
 	
 	if attack_timer >= attack_cooldown:
-		character.attack(target)
+		character.atkdelay_c = 0
+		character.currAtk = character.attack(target)
 		attack_timer = 0.0
 
 func body_exit(body):

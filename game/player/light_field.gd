@@ -23,5 +23,5 @@ func update():
 	
 	var percent = health / max_health
 	print(percent * max_scale)
-	light.set_texture_scale(percent * max_scale)
+	light.scale(Vector2(percent,percent))
 	

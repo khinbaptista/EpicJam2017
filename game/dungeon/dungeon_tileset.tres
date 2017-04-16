@@ -1,21 +1,28 @@
-[gd_resource type="TileSet" load_steps=19 format=1]
+[gd_resource type="TileSet" load_steps=21 format=1]
 
-[ext_resource path="res://dungeon/spr_stone_wall.tex" type="Texture" id=1]
-[ext_resource path="res://dungeon/spr_stone_wall_corner.tex" type="Texture" id=2]
-[ext_resource path="res://dungeon/spr_hole5.tex" type="Texture" id=3]
-[ext_resource path="res://dungeon/spr_stone_wall3.tex" type="Texture" id=4]
-[ext_resource path="res://dungeon/spr_stone_wall2.tex" type="Texture" id=5]
-[ext_resource path="res://dungeon/spr_stone_wall_corner2.tex" type="Texture" id=6]
-[ext_resource path="res://dungeon/spr_stone_wall4.tex" type="Texture" id=7]
+[ext_resource path="res://dungeon/dungeon_tilemap_shader.tres" type="CanvasItemMaterial" id=1]
+[ext_resource path="res://dungeon/spr_stone_wall.tex" type="Texture" id=2]
+[ext_resource path="res://dungeon/spr_stone_wall_corner.tex" type="Texture" id=3]
+[ext_resource path="res://dungeon/spr_hole5.tex" type="Texture" id=4]
+[ext_resource path="res://dungeon/spr_stone_wall3.tex" type="Texture" id=5]
+[ext_resource path="res://dungeon/spr_stone_wall4.tex" type="Texture" id=6]
+[ext_resource path="res://dungeon/spr_stone_wall_corner2.tex" type="Texture" id=7]
 [ext_resource path="res://dungeon/spr_stone_wall_corner4.tex" type="Texture" id=8]
-[ext_resource path="res://dungeon/spr_hole8.tex" type="Texture" id=9]
-[ext_resource path="res://dungeon/spr_hole4.tex" type="Texture" id=10]
-[ext_resource path="res://dungeon/spr_hole3.tex" type="Texture" id=11]
-[ext_resource path="res://dungeon/spr_hole2.tex" type="Texture" id=12]
+[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=9]
+[ext_resource path="res://dungeon/spr_hole8.tex" type="Texture" id=10]
+[ext_resource path="res://dungeon/spr_hole4.tex" type="Texture" id=11]
+[ext_resource path="res://dungeon/spr_hole3.tex" type="Texture" id=12]
 [ext_resource path="res://dungeon/spr_hole1.tex" type="Texture" id=13]
-[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=14]
+[ext_resource path="res://dungeon/spr_hole2.tex" type="Texture" id=14]
 [ext_resource path="res://dungeon/spr_hole7.tex" type="Texture" id=15]
-[ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=16]
+[ext_resource path="res://dungeon/spr_stone_wall2.tex" type="Texture" id=16]
+[ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=17]
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+closed = true
+cull_mode = 0
+polygon = Vector2Array( -60, -60, 60, -60, 60, 70, -60, 70 )
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -30,26 +37,31 @@ extents = Vector2( 60, 60 )
 [resource]
 
 0/name = "spr_stone_wall"
-0/texture = ExtResource( 1 )
+0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+0/material = ExtResource( 1 )
+0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
 0/occluder_offset = Vector2( 64, 64 )
+0/occluder = SubResource( 3 )
 0/navigation_offset = Vector2( 64, 64 )
 0/shape_offset = Vector2( 64, 64 )
 0/shapes = [ SubResource( 1 ) ]
 1/name = "spr_stone_wall_corner"
-1/texture = ExtResource( 2 )
+1/texture = ExtResource( 3 )
 1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+1/material = ExtResource( 1 )
+1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 128, 128 )
 1/occluder_offset = Vector2( 64, 64 )
+1/occluder = SubResource( 3 )
 1/navigation_offset = Vector2( 64, 64 )
 1/shape_offset = Vector2( 64, 64 )
 1/shapes = [ SubResource( 2 ) ]
 2/name = "spr_hole8"
-2/texture = ExtResource( 9 )
+2/texture = ExtResource( 13 )
 2/tex_offset = Vector2( 0, 0 )
+2/material = ExtResource( 1 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 128, 128 )
 2/occluder_offset = Vector2( 64, 64 )
@@ -57,8 +69,9 @@ extents = Vector2( 60, 60 )
 2/shape_offset = Vector2( 0, 0 )
 2/shapes = [  ]
 3/name = "spr_hole9"
-3/texture = ExtResource( 10 )
+3/texture = ExtResource( 11 )
 3/tex_offset = Vector2( 0, 0 )
+3/material = ExtResource( 1 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 128, 128 )
 3/occluder_offset = Vector2( 64, 64 )
@@ -66,8 +79,9 @@ extents = Vector2( 60, 60 )
 3/shape_offset = Vector2( 0, 0 )
 3/shapes = [  ]
 4/name = "spr_hole10"
-4/texture = ExtResource( 11 )
+4/texture = ExtResource( 12 )
 4/tex_offset = Vector2( 0, 0 )
+4/material = ExtResource( 1 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 128, 128 )
 4/occluder_offset = Vector2( 64, 64 )
@@ -75,8 +89,9 @@ extents = Vector2( 60, 60 )
 4/shape_offset = Vector2( 0, 0 )
 4/shapes = [  ]
 5/name = "spr_hole11"
-5/texture = ExtResource( 12 )
+5/texture = ExtResource( 14 )
 5/tex_offset = Vector2( 0, 0 )
+5/material = ExtResource( 1 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 128, 128 )
 5/occluder_offset = Vector2( 64, 64 )
@@ -86,6 +101,7 @@ extents = Vector2( 60, 60 )
 6/name = "spr_hole12"
 6/texture = ExtResource( 13 )
 6/tex_offset = Vector2( 0, 0 )
+6/material = ExtResource( 1 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 128, 128 )
 6/occluder_offset = Vector2( 64, 64 )
@@ -93,8 +109,9 @@ extents = Vector2( 60, 60 )
 6/shape_offset = Vector2( 0, 0 )
 6/shapes = [  ]
 7/name = "spr_floor 2"
-7/texture = ExtResource( 14 )
+7/texture = ExtResource( 9 )
 7/tex_offset = Vector2( 0, 0 )
+7/material = ExtResource( 1 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 128, 128 )
 7/occluder_offset = Vector2( 64, 64 )
@@ -104,6 +121,7 @@ extents = Vector2( 60, 60 )
 8/name = "spr_hole7"
 8/texture = ExtResource( 15 )
 8/tex_offset = Vector2( 0, 0 )
+8/material = ExtResource( 1 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 128, 128 )
 8/occluder_offset = Vector2( 64, 64 )
@@ -111,8 +129,9 @@ extents = Vector2( 60, 60 )
 8/shape_offset = Vector2( 0, 0 )
 8/shapes = [  ]
 9/name = "spr_hole6"
-9/texture = ExtResource( 16 )
+9/texture = ExtResource( 17 )
 9/tex_offset = Vector2( 0, 0 )
+9/material = ExtResource( 1 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 128, 128 )
 9/occluder_offset = Vector2( 64, 64 )
@@ -120,8 +139,9 @@ extents = Vector2( 60, 60 )
 9/shape_offset = Vector2( 0, 0 )
 9/shapes = [  ]
 10/name = "spr_hole5"
-10/texture = ExtResource( 3 )
+10/texture = ExtResource( 4 )
 10/tex_offset = Vector2( 0, 0 )
+10/material = ExtResource( 1 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 128, 128 )
 10/occluder_offset = Vector2( 64, 64 )
@@ -129,26 +149,31 @@ extents = Vector2( 60, 60 )
 10/shape_offset = Vector2( 0, 0 )
 10/shapes = [  ]
 11/name = "spr_stone_wall3"
-11/texture = ExtResource( 4 )
+11/texture = ExtResource( 5 )
 11/tex_offset = Vector2( 0, 0 )
+11/material = ExtResource( 1 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 128, 128 )
 11/occluder_offset = Vector2( 64, 64 )
+11/occluder = SubResource( 3 )
 11/navigation_offset = Vector2( 64, 64 )
 11/shape_offset = Vector2( 0, 0 )
 11/shapes = [  ]
 12/name = "spr_stone_wall2"
-12/texture = ExtResource( 5 )
+12/texture = ExtResource( 6 )
 12/tex_offset = Vector2( 0, 0 )
+12/material = ExtResource( 1 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 128, 128 )
 12/occluder_offset = Vector2( 64, 64 )
+12/occluder = SubResource( 3 )
 12/navigation_offset = Vector2( 64, 64 )
 12/shape_offset = Vector2( 0, 0 )
 12/shapes = [  ]
 13/name = "spr_stone_wall_corner2"
-13/texture = ExtResource( 6 )
+13/texture = ExtResource( 7 )
 13/tex_offset = Vector2( 0, 0 )
+13/material = ExtResource( 1 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 128, 128 )
 13/occluder_offset = Vector2( 64, 64 )
@@ -156,8 +181,9 @@ extents = Vector2( 60, 60 )
 13/shape_offset = Vector2( 0, 0 )
 13/shapes = [  ]
 14/name = "spr_stone_wall4"
-14/texture = ExtResource( 7 )
+14/texture = ExtResource( 6 )
 14/tex_offset = Vector2( 0, 0 )
+14/material = ExtResource( 1 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 128, 128 )
 14/occluder_offset = Vector2( 64, 64 )
@@ -167,10 +193,82 @@ extents = Vector2( 60, 60 )
 15/name = "spr_stone_wall_corner4"
 15/texture = ExtResource( 8 )
 15/tex_offset = Vector2( 0, 0 )
+15/material = ExtResource( 1 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 128, 128 )
 15/occluder_offset = Vector2( 64, 64 )
 15/navigation_offset = Vector2( 64, 64 )
 15/shape_offset = Vector2( 0, 0 )
 15/shapes = [  ]
+16/name = "spr_floor"
+16/texture = ExtResource( 9 )
+16/tex_offset = Vector2( 0, 0 )
+16/material = ExtResource( 1 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 128, 128 )
+16/occluder_offset = Vector2( 64, 64 )
+16/navigation_offset = Vector2( 64, 64 )
+16/shape_offset = Vector2( 0, 0 )
+16/shapes = [  ]
+17/name = "spr_hole1"
+17/texture = ExtResource( 10 )
+17/tex_offset = Vector2( 0, 0 )
+17/material = ExtResource( 1 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 128, 128 )
+17/occluder_offset = Vector2( 64, 64 )
+17/navigation_offset = Vector2( 64, 64 )
+17/shape_offset = Vector2( 0, 0 )
+17/shapes = [  ]
+18/name = "spr_hole5 2"
+18/texture = ExtResource( 11 )
+18/tex_offset = Vector2( 0, 0 )
+18/material = ExtResource( 1 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 128, 128 )
+18/occluder_offset = Vector2( 64, 64 )
+18/navigation_offset = Vector2( 64, 64 )
+18/shape_offset = Vector2( 0, 0 )
+18/shapes = [  ]
+19/name = "spr_hole6 2"
+19/texture = ExtResource( 12 )
+19/tex_offset = Vector2( 0, 0 )
+19/material = ExtResource( 1 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 128, 128 )
+19/occluder_offset = Vector2( 64, 64 )
+19/navigation_offset = Vector2( 64, 64 )
+19/shape_offset = Vector2( 0, 0 )
+19/shapes = [  ]
+20/name = "spr_hole7 2"
+20/texture = ExtResource( 14 )
+20/tex_offset = Vector2( 0, 0 )
+20/material = ExtResource( 1 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 128, 128 )
+20/occluder_offset = Vector2( 64, 64 )
+20/navigation_offset = Vector2( 64, 64 )
+20/shape_offset = Vector2( 0, 0 )
+20/shapes = [  ]
+21/name = "spr_hole2"
+21/texture = ExtResource( 15 )
+21/tex_offset = Vector2( 0, 0 )
+21/material = ExtResource( 1 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 0, 128, 128 )
+21/occluder_offset = Vector2( 64, 64 )
+21/navigation_offset = Vector2( 64, 64 )
+21/shape_offset = Vector2( 0, 0 )
+21/shapes = [  ]
+22/name = "spr_stone_wall4 2"
+22/texture = ExtResource( 16 )
+22/tex_offset = Vector2( 0, 0 )
+22/material = ExtResource( 1 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 0, 0, 128, 128 )
+22/occluder_offset = Vector2( 64, 64 )
+22/occluder = SubResource( 3 )
+22/navigation_offset = Vector2( 64, 64 )
+22/shape_offset = Vector2( 0, 0 )
+22/shapes = [  ]
 
