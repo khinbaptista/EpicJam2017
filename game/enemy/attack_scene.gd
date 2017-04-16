@@ -32,4 +32,5 @@ func _fixed_process(delta):
 
 func on_body_enter(body):
 	if body.has_method("hit"):
-		body.hit(damage)
+		body.hit(damage, (body.get_global_pos() - get_global_pos()).normalized())
+		queue_free()

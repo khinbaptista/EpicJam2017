@@ -56,6 +56,7 @@ level_path = NodePath("..")
 [node name="player" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( -130.856, -132.072 )
+pushback = 20.0
 
 [node name="health_restore" parent="." instance=ExtResource( 4 )]
 

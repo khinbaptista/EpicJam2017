@@ -225,7 +225,7 @@ cooldown = 0
 
 script/script = ExtResource( 6 )
 cooldown = 0
-attack_cooldown = 2.0
+attack_cooldown = 0.5
 
 [node name="Light2D" type="Light2D" parent="."]
 
