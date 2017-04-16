@@ -2,8 +2,8 @@
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=7]
@@ -140,15 +140,11 @@ shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="ExitDoor" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 67.3053, 247.17 )
-
 [node name="TileMap" type="TileMap" parent="."]
 
 visibility/light_mask = 524289
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -165,6 +161,10 @@ tile_data = IntArray( -65538, 1, -131072, 0, -131070, 0, -131068, 0, -131066, 0,
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 67.3053, 247.17 )
 
 [node name="Item" parent="." instance=ExtResource( 5 )]
 
