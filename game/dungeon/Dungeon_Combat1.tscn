@@ -179,6 +179,7 @@ transform/scale = Vector2( 1.89748, 1.85644 )
 [node name="ExitDoor" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 398.902, 1285.15 )
+is_open = true
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 

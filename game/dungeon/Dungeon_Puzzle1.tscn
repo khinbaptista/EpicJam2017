@@ -166,6 +166,7 @@ transform/scale = Vector2( 2.89593, 1.64776 )
 [node name="ExitDoor" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1313.84, 1239.29 )
+is_open = false
 
 [node name="TileMap" type="TileMap" parent="."]
 
