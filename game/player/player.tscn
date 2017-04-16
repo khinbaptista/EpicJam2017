@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=27 format=1]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/light.png" type="Texture" id=2]
@@ -16,8 +16,9 @@
 [ext_resource path="res://player/attacks/ranged_attack.tscn" type="PackedScene" id=14]
 [ext_resource path="res://player/char_camera.gd" type="Script" id=15]
 [ext_resource path="res://menus/heart_ui.gd" type="Script" id=16]
-[ext_resource path="res://menus/res/heart.png" type="Texture" id=17]
-[ext_resource path="res://menus/res/heart_hollow.png" type="Texture" id=18]
+[ext_resource path="res://menus/res/Heart_Full.png" type="Texture" id=17]
+[ext_resource path="res://menus/res/Heart_Empty.png" type="Texture" id=18]
+[ext_resource path="res://menus/res/heart.png" type="Texture" id=19]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -529,7 +530,7 @@ margin/left = 38.0
 margin/top = 24.0
 margin/right = 92.0
 margin/bottom = 69.0
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 stretch_mode = 0
 
 [node name="heart2" type="TextureFrame" parent="Camera2D/CanvasLayer/Container"]
@@ -543,7 +544,7 @@ margin/left = 103.0
 margin/top = 24.0
 margin/right = 157.0
 margin/bottom = 69.0
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 stretch_mode = 0
 
 [node name="heart3" type="TextureFrame" parent="Camera2D/CanvasLayer/Container"]
@@ -557,7 +558,7 @@ margin/left = 168.0
 margin/top = 24.0
 margin/right = 222.0
 margin/bottom = 69.0
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 stretch_mode = 0
 
 
