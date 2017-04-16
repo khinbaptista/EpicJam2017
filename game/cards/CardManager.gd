@@ -26,6 +26,8 @@ var typesSorted = []
 
 var totalFlipped = 0
 
+var data 
+
 func _ready():
 	card = preload("res://cards/Card.tscn")
 	cardBack = preload("res://cards/cardBack.png")
@@ -36,6 +38,8 @@ func _ready():
 	cardTrap = preload("res://cards/cardTrap.png")
 
 	var cards = []
+	
+	data = get_node("/root/ScenesData")
 	
 	var i
 	var x = 220;
@@ -81,12 +85,15 @@ func FlipSprite(card):
 	elif(card.cardType == TYPE.trap):
 		card.get_child(0).set_texture(cardTrap)
 		
+		
 	if(totalFlipped == totalCards):
-		var data = get_node("/root/ScenesData")
+		_create_timer(self, 3.0, true, "goOn")
 		data.first = typesSorted[0]
 		data.second = typesSorted[1]
 		data.third = typesSorted[2]
-		data.loadNextScene()
+		
+func goOn():
+	data.loadNextScene()
 	
 func _wait(seconds):
     self._create_timer(self, seconds, true, "_emit_timer_end_signal")
