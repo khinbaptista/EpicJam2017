@@ -2,9 +2,9 @@
 
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=1]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -43,8 +43,21 @@ modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 transform/pos = Vector2( 362.324, 1261.61 )
 pushback = 20.0
 
+[node name="Item" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 773.554, 1269.93 )
+
+[node name="Item1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 104.311, 760.849 )
+
+[node name="Item4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 966.884, 108.409 )
+
 [node name="left_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, 284.632 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -67,6 +80,7 @@ _update_shape_index = 0
 
 [node name="down_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 530.558, 596.193 )
 transform/rot = 90.0
 input/pickable = false
@@ -90,6 +104,7 @@ _update_shape_index = 0
 
 [node name="right_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 1040.61, 277.638 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
@@ -112,6 +127,7 @@ _update_shape_index = 0
 
 [node name="upper_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 490.919, 2.51754 )
 input/pickable = false
 shapes/0/shape = SubResource( 4 )
@@ -133,98 +149,86 @@ shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Hole5" parent="." instance=ExtResource( 3 )]
+[node name="Hole5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 154.243, 1176.46 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.87337, 1.99881 )
 
-[node name="Hole8" parent="." instance=ExtResource( 3 )]
+[node name="Hole8" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 258.652, 972.587 )
 transform/rot = 90.0
 transform/scale = Vector2( 4.91902, 1.99881 )
 
-[node name="Hole9" parent="." instance=ExtResource( 3 )]
+[node name="Hole9" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 361.898, 889.366 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.87337, 1.99881 )
 
-[node name="Hole6" parent="." instance=ExtResource( 3 )]
+[node name="Hole6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 59.4701, 1275.85 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.65161, 1.69375 )
 
-[node name="Hole7" parent="." instance=ExtResource( 3 )]
+[node name="Hole7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 639.769, 1188.09 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole10" parent="." instance=ExtResource( 3 )]
+[node name="Hole10" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 845.69, 862.052 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole14" parent="." instance=ExtResource( 3 )]
+[node name="Hole14" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1051.61, 341.53 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole15" parent="." instance=ExtResource( 3 )]
+[node name="Hole15" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1154.57, 238.569 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole16" parent="." instance=ExtResource( 3 )]
+[node name="Hole16" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1257.03, 92.179 )
 transform/rot = 90.0
 transform/scale = Vector2( 3.6762, 1.85644 )
 
-[node name="Hole11" parent="." instance=ExtResource( 3 )]
+[node name="Hole11" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 942.93, 965.012 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole12" parent="." instance=ExtResource( 3 )]
+[node name="Hole12" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 845.69, 1062.25 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole13" parent="." instance=ExtResource( 3 )]
+[node name="Hole13" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 938.34, 1161.79 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole1" parent="." instance=ExtResource( 3 )]
+[node name="Hole1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 390.14, 258.937 )
 transform/scale = Vector2( 4.11373, 2.76895 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1276.51, 1293.81 )
-
-[node name="Item" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 773.554, 1269.93 )
-
-[node name="Item1" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 104.311, 760.849 )
-
-[node name="Item4" parent="." instance=ExtResource( 5 )]
-
-transform/pos = Vector2( 966.884, 108.409 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
