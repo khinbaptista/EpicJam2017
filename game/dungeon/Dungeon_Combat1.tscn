@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=1]
-[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=2]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -35,14 +35,6 @@ transform/pos = Vector2( 897.848, 642.212 )
 transform/scale = Vector2( 14.0768, 11.0346 )
 texture = ExtResource( 1 )
 modulate = Color( 0.0976563, 0.0976563, 0.0976563, 1 )
-
-[node name="Item1" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 214.359, 115.736 )
-
-[node name="Item4" parent="." instance=ExtResource( 2 )]
-
-transform/pos = Vector2( 1456.41, 112.204 )
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
@@ -135,47 +127,47 @@ shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Hole7" parent="." instance=ExtResource( 3 )]
+[node name="Hole7" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 896.525, 1233.26 )
 transform/rot = 90.0
 transform/scale = Vector2( 3.45063, 4.79266 )
 
-[node name="Hole10" parent="." instance=ExtResource( 3 )]
+[node name="Hole10" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 591.44, 501.548 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole15" parent="." instance=ExtResource( 3 )]
+[node name="Hole15" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1181.13, 492.82 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole11" parent="." instance=ExtResource( 3 )]
+[node name="Hole11" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 688.68, 593.124 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole12" parent="." instance=ExtResource( 3 )]
+[node name="Hole12" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 891.415, 686.569 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 5.87005 )
 
-[node name="Hole13" parent="." instance=ExtResource( 3 )]
+[node name="Hole13" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 1082.54, 588.776 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 398.902, 1285.15 )
 
-[node name="player" parent="." instance=ExtResource( 5 )]
+[node name="player" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 251.36, 345.087 )
 pushback = 20.0
@@ -183,7 +175,7 @@ pushback = 20.0
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 5 )
 cell/size = Vector2( 128, 128 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -200,5 +192,13 @@ tile_data = IntArray( -65532, 1, -65527, 1, 4, 1, 9, 1, 65540, 1, 65545, 1, 3276
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Item1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 214.359, 115.736 )
+
+[node name="Item4" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1456.41, 112.204 )
 
 
