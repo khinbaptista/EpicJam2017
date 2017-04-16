@@ -20,11 +20,11 @@ func loadNextScene():
 func loadScene(j):
 	if(j == 1):
 		get_tree().change_scene("res://dungeon/Dungeon_Combat1.tscn")
-	elif(i == 2):
+	elif(j == 2):
 		get_tree().change_scene("res://dungeon/Dungeon_Greed1.tscn")
-	elif(i == 3):
+	elif(j == 3):
 		get_tree().change_scene("res://dungeon/Dungeon_Maze1.tscn")
-	elif(i == 4):
+	elif(j == 4):
 		get_tree().change_scene("res://dungeon/Dungeon_Puzzle1.tscn")
-	elif(i == 5):
+	elif(j == 5):
 		get_tree().change_scene("res://dungeon/Dungeon_Trap1.tscn")
