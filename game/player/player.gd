@@ -15,6 +15,8 @@ func hit(damage, dir = Vector2()):
 	health.value -= damage
 	
 	if health.value == 0:
-		emit_signal("death")
+		var anim = get_node("AnimationPlayer")
+		anim.play("death")
+		anim.connect("finished", self, "emit_signal", ["death"])
 	
 	move(dir * pushback)
