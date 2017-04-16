@@ -8,4 +8,4 @@ func _input(event):
 		load_next()
 
 func load_next():
-	get_tree().change_scene("res://scenes/SceneSystem.tscn")
+	get_tree().change_scene("res://menus/start_menu.tscn")

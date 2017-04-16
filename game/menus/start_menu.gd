@@ -2,25 +2,25 @@ extends Control
 
 export(PackedScene) var next_scene
 
-onready var button_continue	= get_node("try_again")
+onready var button_start	= get_node("start")
 onready var button_quit		= get_node("quit")
 
 var focused_button
 
 func _ready():
-	button_continue.connect("pressed", self, "pressed_continue")
+	button_start.connect("pressed", self, "pressed_start")
 	button_quit.connect("pressed", self, "pressed_quit")
 	
-	button_continue.connect("mouse_enter", self, "changed_focus", [button_continue])
+	button_start.connect("mouse_enter", self, "changed_focus", [button_start])
 	button_quit.connect("mouse_enter", self, "changed_focus", [button_quit])
 	
-	changed_focus(button_continue)
+	changed_focus(button_start)
 	
 	set_process_input(true)
 
 func _input(event):
 	if event.is_action_pressed("ui_up") and not event.is_echo():
-		changed_focus(button_continue)
+		changed_focus(button_start)
 	
 	elif event.is_action_pressed("ui_down") and not event.is_echo():
 		changed_focus(button_quit)
@@ -35,10 +35,10 @@ func changed_focus(button):
 	focused_button = button
 	focused_button.get_node("focus").show()
 
-func pressed_continue():
-	print("Continue")
+func pressed_start():
+	print("Start")
 	get_tree().change_scene_to(next_scene)
 
 func pressed_quit():
-	print("Give up")
+	print("Quit")
 	get_tree().quit()
