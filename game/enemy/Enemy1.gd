@@ -21,7 +21,7 @@ func _ready():
 	
 func _process(delta):
 	#process_input();
-	move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
+	#move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
 	#handle_fsm();
 	
