@@ -5,7 +5,7 @@ signal death
 export(float) var pushback = 20.0
 
 func _ready():
-	pass
+	get_tree().get_root().get_node("/root/death_listener").player = self
 
 func hit(damage, dir = Vector2()):
 	var health = get_node("attributes/health")
@@ -13,6 +13,5 @@ func hit(damage, dir = Vector2()):
 	
 	if health.value == 0:
 		emit_signal("death")
-		get_tree().quit()
 	
 	move(dir * pushback)
