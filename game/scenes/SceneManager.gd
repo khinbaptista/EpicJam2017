@@ -57,12 +57,24 @@ func _ready():
 	sprite2.set_pos(Vector2(centerX, centerY))
 	
 	set_fixed_process(true)
+	set_process_input(true)
 	
 func _fixed_process(delta):
 	globalTimer += delta
 	if(globalTimer > sceneTime):
 		globalTimer = 0
 		swapScene()
+		
+func _input(event):
+	if(event.is_action_pressed("ui_accept") and not event.is_echo()):
+		get_child(2).stop(true)
+		if(i < scenes.size() - 1):
+			currentSprite.set_texture(nextScene)
+			i += 1
+			nextScene = load(scenes[i])
+			nextSprite.set_texture(nextScene)
+		else:
+			get_tree().change_scene("res://scenes/CardsScene.tscn")
 		
 func loadNext():
 	if(i < scenes.size() - 1):
