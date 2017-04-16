@@ -19,9 +19,12 @@ var attack_scene = preload("attack.tscn")
 
 func _ready():
 	set_process(true);
+	
 	particle = get_node("Particles2D");
 	anim_player = get_node("AnimationPlayer");
 	fsm = get_node("StateMachine");
+	
+	get_node("sfx").play("idle")
 	
 func _process(delta):
 	#process_input();
@@ -93,6 +96,8 @@ func instance_attack(target):
 
 signal death
 func hit(damage, player=null):
+	get_node("sfx").play("hit")
+	
 	var health = get_node("attributes/health")
 	health.value -= damage
 	
@@ -103,6 +108,7 @@ func hit(damage, player=null):
 	printt("Enemy hit!", damage, health.value)
 	
 	if health.value == 0:
+		get_node("sfx").stop_all(); get_node("sfx").play("death")
 		emit_signal("death")
 		queue_free()
 

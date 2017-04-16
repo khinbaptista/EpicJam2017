@@ -21,13 +21,13 @@
 [ext_resource path="res://dungeon/spr_stone_wall_corner3.tex" type="Texture" id=19]
 [ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=20]
 
-[sub_resource type="OccluderPolygon2D" id=2]
+[sub_resource type="OccluderPolygon2D" id=1]
 
 closed = true
 cull_mode = 0
 polygon = Vector2Array( -60, -60, 60, -60, 60, 70, -60, 70 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
@@ -51,10 +51,10 @@ extents = Vector2( 60, 60 )
 0/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 0/region = Rect2( 0, 0, 128, 128 )
 0/occluder_offset = Vector2( 64, 64 )
-0/occluder = SubResource( 2 )
+0/occluder = SubResource( 1 )
 0/navigation_offset = Vector2( 64, 64 )
 0/shape_offset = Vector2( 64, 64 )
-0/shapes = [ SubResource( 1 ) ]
+0/shapes = [ SubResource( 2 ) ]
 1/name = "spr_stone_wall_corner"
 1/texture = ExtResource( 3 )
 1/tex_offset = Vector2( 0, 0 )
@@ -62,7 +62,7 @@ extents = Vector2( 60, 60 )
 1/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 1/region = Rect2( 0, 0, 128, 128 )
 1/occluder_offset = Vector2( 64, 64 )
-1/occluder = SubResource( 2 )
+1/occluder = SubResource( 1 )
 1/navigation_offset = Vector2( 64, 64 )
 1/shape_offset = Vector2( 64, 64 )
 1/shapes = [ SubResource( 3 ) ]
@@ -161,7 +161,7 @@ extents = Vector2( 60, 60 )
 11/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 11/region = Rect2( 0, 0, 128, 128 )
 11/occluder_offset = Vector2( 64, 64 )
-11/occluder = SubResource( 2 )
+11/occluder = SubResource( 1 )
 11/navigation_offset = Vector2( 64, 64 )
 11/shape_offset = Vector2( 0, 0 )
 11/shapes = [  ]
@@ -172,7 +172,7 @@ extents = Vector2( 60, 60 )
 12/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 12/region = Rect2( 0, 0, 128, 128 )
 12/occluder_offset = Vector2( 64, 64 )
-12/occluder = SubResource( 2 )
+12/occluder = SubResource( 1 )
 12/navigation_offset = Vector2( 64, 64 )
 12/shape_offset = Vector2( 0, 0 )
 12/shapes = [  ]
@@ -273,7 +273,7 @@ extents = Vector2( 60, 60 )
 22/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 22/region = Rect2( 0, 0, 128, 128 )
 22/occluder_offset = Vector2( 64, 64 )
-22/occluder = SubResource( 2 )
+22/occluder = SubResource( 1 )
 22/navigation_offset = Vector2( 64, 64 )
 22/shape_offset = Vector2( 0, 0 )
 22/shapes = [  ]
@@ -292,7 +292,7 @@ extents = Vector2( 60, 60 )
 24/modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 24/region = Rect2( 0, 0, 128, 128 )
 24/occluder_offset = Vector2( 64, 64 )
-24/occluder = SubResource( 2 )
+24/occluder = SubResource( 1 )
 24/navigation_offset = Vector2( 64, 64 )
 24/shape_offset = Vector2( 64, 64 )
 24/shapes = [ SubResource( 4 ) ]

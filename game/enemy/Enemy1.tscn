@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://enemy/attack.gd" type="Script" id=6]
 [ext_resource path="res://player/light.png" type="Texture" id=7]
 [ext_resource path="res://gameplay/attribute.gd" type="Script" id=8]
+[ext_resource path="res://Sounds/FX/ENEMY_DEATH.wav" type="Sample" id=9]
+[ext_resource path="res://Sounds/FX/ENEMY_HIT.wav" type="Sample" id=10]
+[ext_resource path="res://Sounds/FX/ENEMY_IDLE.wav" type="Sample" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -89,6 +92,27 @@ radius = 548.226
 
 custom_solver_bias = 0.0
 radius = 1018.45
+
+[sub_resource type="SampleLibrary" id=5]
+
+samples/death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/hit = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+samples/idle = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
 
 [node name="Enemy1" type="KinematicBody2D"]
 
@@ -211,6 +235,7 @@ autoplay = ""
 
 [node name="StateMachine" type="Node" parent="."]
 
+editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -255,6 +280,7 @@ shadow/item_mask = 1
 
 [node name="attack_range" type="Area2D" parent="."]
 
+editor/display_folded = true
 visibility/visible = false
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
@@ -293,6 +319,8 @@ _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="movement_speed" type="Node" parent="attributes"]
 
 script/script = ExtResource( 8 )
@@ -318,6 +346,17 @@ multiplier = 1.0
 addition = 0.0
 
 [node name="attacks" type="Node" parent="."]
+
+[node name="sfx" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 2
+config/samples = SubResource( 5 )
+config/pitch_random = 0.0
 
 [connection signal="body_enter" from="attack_range" to="StateMachine/Seeking" method="attack_range_body_enter"]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://enemy/attack_scene.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
+[ext_resource path="res://Sounds/FX/ENEMY_ATTACK_RANGED.wav" type="Sample" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -13,6 +14,15 @@ height = 28.4444
 
 offsets = FloatArray( 0, 0.287179, 0.989744, 0.994872, 1 )
 colors = ColorArray( 0, 0, 0, 1, 0.317125, 0.0402832, 0.429688, 1, 0, 0, 0, 0.164667, 0.716208, 0.652313, 0.742188, 0.586353, 1, 1, 1, 1 )
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/attack_sfx = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
 
 [node name="attack" type="Area2D"]
 
@@ -85,6 +95,17 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+
+[node name="sfx" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 3 )
+config/pitch_random = 0.0
 
 [connection signal="body_enter" from="." to="." method="on_body_enter"]
 

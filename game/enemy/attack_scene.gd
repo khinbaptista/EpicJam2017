@@ -14,11 +14,13 @@ func _ready():
 	
 	set_global_pos(get_parent().get_parent().get_global_pos())
 	
+	
 	if target != null:
 		direction = (target.get_global_pos() - get_global_pos()).normalized()
 	else:
 		direction = Vector2(0, 1).rotated(get_global_rot())
 	
+	get_node("sfx").play("attack_sfx")
 	set_global_rot(Vector2(0, 1).angle_to(direction))
 	set_fixed_process(true)
 
