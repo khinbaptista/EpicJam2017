@@ -10,7 +10,8 @@ export(float, 0, 1000, 2) var speed = 10;
 export(NodePath) var level_path
 onready var level = get_node(level_path)
 
-onready var PlayerClass = preload("res://player/player.gd")
+var PlayerClass = preload("res://player/player.gd")
+var attack_scene = preload("attack.tscn") 
 
 func _ready():
 	set_process(true);
@@ -19,10 +20,10 @@ func _ready():
 	fsm = get_node("StateMachine");
 	
 func _process(delta):
-	process_input();
+	#process_input();
 	move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
-	handle_fsm();
+	#handle_fsm();
 	
 func handle_fsm():
 	if(!anim_player.is_playing()):
@@ -45,7 +46,7 @@ func process_input():
 	if(Input.is_action_pressed("ui_right")):
 		dir.x = 1;
 	elif(Input.is_action_pressed("ui_left")):
-		dir.x = -1;	
+		dir.x = -1;
 	
 	if(Input.is_action_pressed("ui_accept")):
 		attack();
@@ -54,7 +55,6 @@ func process_input():
 	
 var lerp_w = 0;
 func process_particles(dir, delta):
-
 	if(fsm.current_state.name == "Attacking"):
 		return;
 
@@ -70,8 +70,27 @@ func process_particles(dir, delta):
 	particle.set_param(particle.PARAM_LINEAR_VELOCITY, lerp(100, 300, lerp_w));
 	particle.set_param(particle.PARAM_ORBIT_VELOCITY, lerp(0, 5, lerp_w));
 	
-func attack():
+func attack(target):
+	look_at(target.get_global_pos())
 	anim_player.play("attack");
+	instance_attack(target)
+
+func instance_attack(target):
+	var attack_node = attack_scene.instance()
+	attack_node.target = target
+	attack_node.damage = get_node("attributes/damage").value
+	get_node("attacks").add_child(attack_node)
+
+signal death
+func hit(damage):
+	var health = get_node("attributes/health")
+	health.value -= damage
+	
+	printt("Enemy hit!", damage, health.value)
+	
+	if health.value == 0:
+		emit_signal("death")
+		queue_free()
 
 func on_body_enter(body):
 	if body extends PlayerClass:

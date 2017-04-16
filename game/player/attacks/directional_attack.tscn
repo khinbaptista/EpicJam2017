@@ -57,7 +57,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 collision/layers = 2
-collision/mask = 2
+collision/mask = 4
 script/script = ExtResource( 1 )
 damage = 1.0
 move = true
@@ -65,6 +65,7 @@ speed = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 flip_v = true
