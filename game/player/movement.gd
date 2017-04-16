@@ -31,7 +31,6 @@ func _fixed_process(delta):
 		anim_player.play("movement")
 	
 	if movement == Vector2(): 
-		
 		return
 	
 	movement = movement.normalized()
@@ -39,4 +38,9 @@ func _fixed_process(delta):
 	var angle = player.get_angle_to(player.get_global_pos() + movement);
 	player.rotate(angle * delta * 10);
 	#player.look_at(player.get_global_pos() + movement)
-	player.move(movement * movement_attr.value * delta)
+	var remaining = player.move(movement * movement_attr.value * delta)
+	
+	if player.is_colliding():
+		var normal = player.get_collision_normal()
+		var remaining = remaining.slide(normal)
+		player.move(remaining)
