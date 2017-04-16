@@ -10,6 +10,8 @@ var direction = Vector2(0, 1)
 func _ready():
 	connect("body_enter", self, "on_body_enter")
 	
+	get_node("sfx").play("attack_sfx")
+	
 	if move:
 		direction = Vector2(0, 1).rotated(get_global_rot())
 		set_fixed_process(true)

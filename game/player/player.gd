@@ -33,7 +33,9 @@ func shake_screen(shk_str, shk_dur):
 func hit(damage, dir = Vector2()):
 	if(invincible):
 		return
-		
+	
+	get_node("SamplePlayer").play("hit")
+	
 	var health = get_node("attributes/health")
 	health.value -= damage
 	invincible = true
@@ -42,6 +44,7 @@ func hit(damage, dir = Vector2()):
 	shake_screen(-damage, 0.25)
 	
 	if health.value == 0:
+		get_node("SamplePlayer").play("death", true)
 		var anim = get_node("AnimationPlayer")
 		anim.play("death")
 		anim.connect("finished", self, "emit_signal", ["death"])

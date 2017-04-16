@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://player/attacks/attack.gd" type="Script" id=1]
 [ext_resource path="res://player/attacks/wave.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/FX/PLAYER_ATTACK_MELEE_DIRECTIONAL.wav" type="Sample" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -43,6 +44,15 @@ tracks/2/keys = {
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="SampleLibrary" id=3]
+
+samples/attack_sfx = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
 }
 
 [node name="directional_attack" type="Area2D"]
@@ -87,6 +97,23 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "activate"
+
+[node name="sfx" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 3 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
 
 [connection signal="finished" from="AnimationPlayer" to="." method="finished"]
 
