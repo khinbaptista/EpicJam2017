@@ -1,14 +1,13 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
-[ext_resource path="res://dungeon/dungeon_tilemap_shader.tres" type="CanvasItemMaterial" id=2]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=4]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=5]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=7]
-[ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=3]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -42,10 +41,9 @@ script/script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 
-material/material = ExtResource( 2 )
 transform/pos = Vector2( -6.10352e-05, 0 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 2 )
 cell/size = Vector2( 128, 128 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -68,11 +66,12 @@ __meta__ = {
 visibility/visible = false
 transform/pos = Vector2( 896.047, 705.16 )
 transform/scale = Vector2( 16.0359, 13.0562 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 modulate = Color( 0, 0, 0, 1 )
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 0, 284.632 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -142,8 +141,12 @@ _update_shape_index = 0
 
 [node name="upper_wall" type="StaticBody2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 559.225, -16.4563 )
 input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( -2.59176e-07, -5.92926, 11.712, -5.11948e-07, 336.482, -0.279999 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -151,105 +154,105 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="CollisionShape2D1" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D1" type="CollisionShape2D" parent="upper_wall"]
 
-transform/pos = Vector2( 895.707, -16.7363 )
+transform/pos = Vector2( 336.482, -0.279999 )
 transform/rot = 90.0
 transform/scale = Vector2( 5.92926, 11.712 )
 shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Hole7" parent="." instance=ExtResource( 5 )]
+[node name="Hole7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 886.885, 1220.8 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.95975, 4.33407 )
 
-[node name="Hole10" parent="." instance=ExtResource( 5 )]
+[node name="Hole10" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 573.817, 448.68 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole15" parent="." instance=ExtResource( 5 )]
+[node name="Hole15" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1203.79, 455.057 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 1.85644 )
 
-[node name="Hole11" parent="." instance=ExtResource( 5 )]
+[node name="Hole11" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 633.819, 572.984 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 3.80686 )
 
-[node name="Hole12" parent="." instance=ExtResource( 5 )]
+[node name="Hole12" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 887.111, 701.674 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 4.64169 )
 
-[node name="Hole13" parent="." instance=ExtResource( 5 )]
+[node name="Hole13" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1136.38, 578.706 )
 transform/rot = 90.0
 transform/scale = Vector2( 1.89748, 4.01112 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 6 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 398.902, 1285.15 )
 is_open = true
 
-[node name="Item1" parent="." instance=ExtResource( 7 )]
+[node name="Item1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 214.359, 115.736 )
 
-[node name="Item4" parent="." instance=ExtResource( 7 )]
+[node name="Item4" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1456.41, 112.204 )
 
-[node name="Item5" parent="." instance=ExtResource( 7 )]
+[node name="Item5" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1460.95, 1245.97 )
 
-[node name="Enemy1" parent="." instance=ExtResource( 8 )]
+[node name="Enemy1" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 184.038, 361.26 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy2" parent="." instance=ExtResource( 8 )]
+[node name="Enemy2" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1560.92, 383.981 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy3" parent="." instance=ExtResource( 8 )]
+[node name="Enemy3" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1508.66, 1008.8 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy4" parent="." instance=ExtResource( 8 )]
+[node name="Enemy4" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 224.936, 1008.8 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy5" parent="." instance=ExtResource( 8 )]
+[node name="Enemy5" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 890.654, 461.231 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy6" parent="." instance=ExtResource( 8 )]
+[node name="Enemy6" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 618.005, 356.716 )
 speed = 40.0
 level_path = NodePath("..")
 
-[node name="Enemy7" parent="." instance=ExtResource( 8 )]
+[node name="Enemy7" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1181.48, 356.716 )
 level_path = NodePath("..")
@@ -259,7 +262,7 @@ level_path = NodePath("..")
 navpoly = SubResource( 5 )
 enabled = true
 
-[node name="player" parent="." instance=ExtResource( 9 )]
+[node name="player" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 907.99, 79.2541 )
 
