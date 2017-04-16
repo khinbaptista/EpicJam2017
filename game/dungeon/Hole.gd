@@ -5,4 +5,4 @@ func _ready():
 
 func on_player_enter(body):
 	if(body.get_name() == "player"):
-		hide()
+		body.kill()
