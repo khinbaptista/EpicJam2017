@@ -1,0 +1,160 @@
+[gd_scene load_steps=20 format=1]
+
+[ext_resource path="res://dungeon/spr_stone_wall.tex" type="Texture" id=1]
+[ext_resource path="res://dungeon/spr_stone_wall_corner.tex" type="Texture" id=2]
+[ext_resource path="res://dungeon/spr_stone_wall_corner3.tex" type="Texture" id=3]
+[ext_resource path="res://dungeon/spr_hole8.tex" type="Texture" id=4]
+[ext_resource path="res://dungeon/spr_hole4.tex" type="Texture" id=5]
+[ext_resource path="res://dungeon/spr_hole3.tex" type="Texture" id=6]
+[ext_resource path="res://dungeon/spr_hole2.tex" type="Texture" id=7]
+[ext_resource path="res://dungeon/spr_hole1.tex" type="Texture" id=8]
+[ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=9]
+[ext_resource path="res://dungeon/spr_hole7.tex" type="Texture" id=10]
+[ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=11]
+[ext_resource path="res://dungeon/spr_hole5.tex" type="Texture" id=12]
+[ext_resource path="res://dungeon/spr_stone_wall3.tex" type="Texture" id=13]
+[ext_resource path="res://dungeon/spr_stone_wall2.tex" type="Texture" id=14]
+[ext_resource path="res://dungeon/spr_stone_wall_corner2.tex" type="Texture" id=15]
+[ext_resource path="res://dungeon/spr_stone_wall4.tex" type="Texture" id=16]
+[ext_resource path="res://dungeon/spr_stone_wall_corner4.tex" type="Texture" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 60 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 60 )
+
+[node name="Dungeon_Tileset" type="Node2D"]
+
+transform/pos = Vector2( 0, 2.27208 )
+
+[node name="spr_stone_wall" type="Sprite" parent="."]
+
+transform/pos = Vector2( 70, 350 )
+texture = ExtResource( 1 )
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="spr_stone_wall"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spr_stone_wall/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="spr_stone_wall_corner" type="Sprite" parent="."]
+
+transform/pos = Vector2( 70, 490 )
+texture = ExtResource( 2 )
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="spr_stone_wall_corner"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spr_stone_wall_corner/StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="spr_stone_wall_corner3" type="Sprite" parent="spr_stone_wall_corner"]
+
+transform/pos = Vector2( 280, 0 )
+texture = ExtResource( 3 )
+
+[node name="spr_hole8" type="Sprite" parent="."]
+
+transform/pos = Vector2( 210, 70 )
+texture = ExtResource( 4 )
+
+[node name="spr_hole9" type="Sprite" parent="."]
+
+transform/pos = Vector2( 70, 210 )
+texture = ExtResource( 5 )
+
+[node name="spr_hole10" type="Sprite" parent="."]
+
+transform/pos = Vector2( 210, 210 )
+texture = ExtResource( 6 )
+
+[node name="spr_hole11" type="Sprite" parent="."]
+
+transform/pos = Vector2( 350, 210 )
+texture = ExtResource( 7 )
+
+[node name="spr_hole12" type="Sprite" parent="."]
+
+transform/pos = Vector2( 490, 210 )
+texture = ExtResource( 8 )
+
+[node name="spr_floor 2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 70, 70 )
+texture = ExtResource( 9 )
+
+[node name="spr_hole7" type="Sprite" parent="."]
+
+transform/pos = Vector2( 350, 70 )
+texture = ExtResource( 10 )
+
+[node name="spr_hole6" type="Sprite" parent="."]
+
+transform/pos = Vector2( 630, 70 )
+texture = ExtResource( 11 )
+
+[node name="spr_hole5" type="Sprite" parent="."]
+
+transform/pos = Vector2( 490, 70 )
+texture = ExtResource( 12 )
+
+[node name="spr_stone_wall3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 350, 350 )
+texture = ExtResource( 13 )
+
+[node name="spr_stone_wall2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 490, 350 )
+texture = ExtResource( 14 )
+
+[node name="spr_stone_wall_corner2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 490, 490 )
+texture = ExtResource( 15 )
+
+[node name="spr_stone_wall4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 210, 350 )
+texture = ExtResource( 16 )
+
+[node name="spr_stone_wall_corner4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 210, 490 )
+texture = ExtResource( 17 )
+
+
