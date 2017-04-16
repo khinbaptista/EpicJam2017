@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=1]
+[gd_scene load_steps=26 format=1]
 
 [ext_resource path="res://dungeon/dungeon_tilemap_shader.tres" type="CanvasItemMaterial" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
@@ -19,8 +19,7 @@
 [ext_resource path="res://dungeon/spr_stone_wall4.tex" type="Texture" id=17]
 [ext_resource path="res://dungeon/spr_stone_wall_corner4.tex" type="Texture" id=18]
 [ext_resource path="res://dungeon/spr_hole_middle.tex" type="Texture" id=19]
-[ext_resource path="res://dungeon/Hole.gd" type="Script" id=20]
-[ext_resource path="res://dungeon/spr_stone_wall_middle.tex" type="Texture" id=21]
+[ext_resource path="res://dungeon/spr_stone_wall_middle.tex" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,12 +37,12 @@ polygon = Vector2Array( -60, -60, 60, -60, 60, 70, -60, 70 )
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 59.3111, 60.8059 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
@@ -253,18 +252,17 @@ modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 [node name="Area2d" type="Area2D" parent="spr_hole_middle"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spr_hole_middle/Area2d"]
 
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -272,13 +270,13 @@ _update_shape_index = 0
 
 editor/display_folded = true
 transform/pos = Vector2( 630, 347.728 )
-texture = ExtResource( 21 )
+texture = ExtResource( 20 )
 modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="spr_stone_wall_middle"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -290,7 +288,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spr_stone_wall_middle/StaticBody2D"]
 
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
@@ -299,7 +297,5 @@ _update_shape_index = 0
 transform/pos = Vector2( 0, -2.27209 )
 occluder = SubResource( 2 )
 light_mask = 1
-
-[connection signal="body_enter" from="spr_hole_middle/Area2d" to="spr_hole_middle/Area2d" method="on_body_enter"]
 
 
