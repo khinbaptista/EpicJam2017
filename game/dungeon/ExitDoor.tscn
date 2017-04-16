@@ -1,13 +1,40 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://dungeon/ExitDoor.gd" type="Script" id=1]
-[ext_resource path="res://dungeon/white_door.png" type="Texture" id=2]
+[ext_resource path="res://dungeon/portal.png" type="Texture" id=2]
 [ext_resource path="res://player/light.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 50.8446
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "spin"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:transform/rot")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.3, 0.7, 1 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 270.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:transform/scale")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5, 1 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.25, 1.25 ), Vector2( 1, 1 ) ]
+}
 
 [node name="ExitDoor" type="Area2D"]
 
@@ -20,10 +47,13 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+is_open = true
 
 [node name="Sprite" type="Sprite" parent="."]
 
 visibility/opacity = 0.8
+transform/rot = 1.10564
+transform/scale = Vector2( 1.00184, 1.00184 )
 texture = ExtResource( 2 )
 modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 
@@ -54,5 +84,16 @@ shadow/color = Color( 0, 0, 0, 0 )
 shadow/buffer_size = 2048
 shadow/esm_multiplier = 80.0
 shadow/item_mask = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/spin = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "spin"
 
 

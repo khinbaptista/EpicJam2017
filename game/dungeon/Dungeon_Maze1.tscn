@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
 [ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://dungeon/white_door.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -163,15 +164,11 @@ transform/scale = Vector2( 4.22245, 4.17668 )
 transform/pos = Vector2( 428.168, 643.417 )
 transform/scale = Vector2( 4.11373, 1.92174 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1143.57, 31.3095 )
-is_open = true
-
 [node name="TileMap" type="TileMap" parent="."]
 
+visibility/light_mask = 524289
 mode = 0
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -183,11 +180,15 @@ collision/friction = 1.0
 collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
-occluder/light_mask = 1
-tile_data = IntArray( -131067, 1, -131059, 1, -131048, 1, 5, 1, 13, 1, 24, 1, 131077, 1, 131085, 1, 131088, 1, 131090, 1, 131092, 1, 131096, 1, 262143, 0, 196609, 0, 262149, 1, 262157, 1, 262160, 1, 262162, 1, 262164, 1, 262168, 1, 393216, 23, 393221, 1, 393223, 1, 393229, 1, 393240, 1, 524301, 1, 524303, 1, 524304, 1, 524305, 1, 524312, 1, 589829, 23, 589831, 23, 655377, 1, 720913, 1, 786434, 1, 786436, 1, 786438, 1, 786449, 1, 786456, 1, 786458, 1, 786460, 1, 851979, 1, 917506, 1, 917510, 1, 917528, 1, 917530, 1, 917532, 1, 983051, 1, 1048578, 1, 1048582, 1, 1245193, 1, 1310743, 1, 1310745, 1, 1310747, 1, 1376265, 1, 1441792, 23, 1441794, 23, 1441807, 23, 1441809, 23, 1441815, 1, 1507337, 1, 1572864, 23, 1572866, 23, 1572879, 23, 1572881, 23, 1638409, 1 )
+occluder/light_mask = 524289
+tile_data = IntArray( -65539, 1, -65537, 0, -131071, 0, -131069, 0, -131067, 0, -131065, 0, -131063, 0, -131061, 0, -131059, 0, -131057, 0, -131055, 0, -131053, 0, -131051, 0, -131049, 0, -131047, 0, -131045, 0, -131043, 13, 65534, 14, 0, 16, 2, 16, 4, 16, 5, 24, 7, 16, 9, 16, 11, 16, 13, 24, 15, 16, 17, 16, 19, 16, 22, 16, 24, 24, 27, 16, 29, 22, 196606, 14, 131072, 16, 131074, 16, 131076, 16, 131077, 24, 131079, 16, 131081, 16, 131083, 16, 131085, 24, 131087, 16, 131088, 24, 131090, 24, 131092, 24, 131094, 16, 131096, 24, 131099, 16, 131101, 22, 327678, 14, 262144, 24, 262146, 16, 262148, 16, 262149, 24, 262151, 16, 262153, 16, 262155, 16, 262157, 24, 262159, 16, 262160, 24, 262162, 24, 262164, 24, 262166, 16, 262168, 24, 262171, 16, 262173, 22, 458750, 14, 393216, 23, 393218, 16, 393220, 16, 393221, 24, 393223, 24, 393225, 16, 393227, 16, 393229, 24, 393231, 16, 393232, 16, 393234, 16, 393236, 16, 393238, 16, 393240, 24, 393243, 16, 393245, 22, 589822, 14, 524288, 16, 524290, 16, 524292, 16, 524294, 16, 524296, 16, 524298, 16, 524300, 16, 524301, 24, 524303, 24, 524304, 1, 524305, 24, 524307, 16, 524310, 16, 524312, 24, 524315, 16, 524317, 22, 589829, 23, 589831, 23, 720894, 14, 655360, 16, 655362, 16, 655375, 16, 655377, 24, 655379, 16, 655381, 16, 655383, 16, 655385, 16, 655387, 16, 655389, 22, 720900, 16, 720902, 16, 720904, 16, 720906, 16, 720908, 16, 720913, 1, 851966, 14, 786432, 16, 786434, 24, 786436, 24, 786438, 24, 786445, 16, 786447, 16, 786449, 24, 786451, 16, 786453, 16, 786455, 16, 786457, 16, 786459, 16, 786461, 22, 851976, 16, 851978, 16, 851979, 24, 851992, 24, 851994, 24, 983038, 14, 917504, 16, 917506, 24, 917508, 16, 917510, 24, 917517, 16, 917519, 16, 917533, 22, 983048, 16, 983050, 16, 983051, 24, 983064, 24, 983066, 24, 1114110, 14, 1048576, 16, 1048578, 24, 1048580, 16, 1048582, 24, 1048605, 22, 1114120, 16, 1114122, 16, 1114124, 16, 1114126, 16, 1114128, 16, 1114130, 16, 1114132, 16, 1114134, 16, 1114136, 16, 1114138, 16, 1245182, 14, 1179648, 16, 1179650, 16, 1179652, 16, 1179654, 16, 1179677, 22, 1245193, 24, 1245195, 16, 1245197, 16, 1376254, 14, 1310720, 16, 1310722, 16, 1310724, 16, 1310726, 16, 1310743, 24, 1310745, 24, 1310747, 24, 1310749, 22, 1376265, 24, 1376267, 16, 1376269, 16, 1507326, 14, 1441792, 23, 1441794, 23, 1441796, 16, 1441798, 16, 1441807, 23, 1441809, 23, 1441815, 24, 1441821, 22, 1507337, 24, 1507339, 16, 1507341, 16, 1638398, 14, 1572864, 23, 1572866, 23, 1572868, 16, 1572870, 16, 1572879, 23, 1572881, 23, 1572893, 22, 1769470, 15, 1703936, 11, 1703938, 11, 1703940, 11, 1703942, 11, 1703944, 11, 1703946, 11, 1703948, 11, 1703950, 11, 1703952, 11, 1703954, 11, 1703956, 11, 1703958, 11, 1703960, 11, 1703962, 11, 1703964, 11, 1703966, 25 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1141.11, 70.5971 )
 
 [node name="player" parent="." instance=ExtResource( 6 )]
 
@@ -203,6 +204,7 @@ transform/pos = Vector2( 1725.75, 542.044 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 
+visibility/visible = false
 navpoly = SubResource( 5 )
 enabled = true
 
@@ -240,5 +242,28 @@ level_path = NodePath("..")
 
 transform/pos = Vector2( 1717.69, 1529.11 )
 level_path = NodePath("..")
+
+[node name="Light2D" type="Light2D" parent="."]
+
+transform/pos = Vector2( 9.75089, 4.28088 )
+enabled = true
+editor_only = true
+texture = ExtResource( 9 )
+offset = Vector2( 0, 0 )
+scale = 1000.0
+color = Color( 1, 1, 1, 0.256824 )
+energy = 50.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 524288
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 

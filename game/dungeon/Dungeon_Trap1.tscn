@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
 [ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=5]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=7]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://dungeon/white_door.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -218,15 +219,11 @@ transform/scale = Vector2( 1.89748, 1.72503 )
 transform/pos = Vector2( 380.257, 255.768 )
 transform/scale = Vector2( 4.42256, 4.22322 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1276.51, 1293.81 )
-is_open = true
-
 [node name="TileMap" type="TileMap" parent="."]
 
+visibility/light_mask = 524289
 mode = 0
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 4 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -239,10 +236,14 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -131060, 1, 12, 1, 19, 23, 131076, 23, 131078, 23, 131084, 1, 131090, 23, 262148, 23, 262150, 23, 262156, 1, 262160, 23, 655359, 1, 589825, 1, 589827, 1, 589829, 1, 589831, 1, 589833, 1, 589838, 1, 589840, 1, 589842, 1, 720905, 1, 786444, 23, 851971, 23, 851973, 23, 851977, 1, 851982, 23, 851985, 1, 851987, 1, 983043, 23, 983052, 23, 983057, 1, 1114114, 23, 1114121, 23, 1114126, 23, 1114129, 1, 1245184, 23, 1245193, 1, 1245201, 1 )
+tile_data = IntArray( -131074, 1, -131072, 0, -131070, 0, -131068, 0, -131066, 0, -131064, 0, -131062, 0, -131060, 0, -131058, 0, -131056, 0, -131054, 0, -131052, 0, -131050, 13, -2, 12, 0, 16, 2, 16, 4, 16, 6, 16, 8, 16, 10, 16, 12, 24, 14, 16, 16, 16, 19, 23, 22, 22, 131070, 12, 131072, 16, 131074, 16, 131076, 23, 131078, 23, 131080, 16, 131082, 16, 131084, 24, 131086, 16, 131088, 16, 131090, 23, 131092, 16, 131094, 22, 262142, 12, 262144, 16, 262146, 16, 262148, 23, 262150, 23, 262152, 16, 262154, 16, 262156, 24, 262158, 16, 262160, 23, 262162, 16, 262164, 16, 262166, 22, 393214, 12, 393216, 16, 393218, 16, 393220, 16, 393222, 16, 393224, 16, 393226, 16, 393228, 16, 393230, 16, 393232, 16, 393234, 16, 393236, 16, 393238, 22, 524286, 12, 524299, 16, 524310, 22, 655357, 13, 655359, 14, 589825, 24, 589827, 24, 589829, 24, 589831, 24, 589833, 24, 589838, 24, 589840, 24, 589842, 24, 589844, 16, 655371, 16, 655382, 22, 786430, 12, 720896, 16, 720898, 16, 720900, 16, 720902, 16, 720905, 24, 720910, 16, 720912, 16, 720914, 16, 720916, 16, 786444, 23, 786454, 22, 917502, 12, 851968, 16, 851971, 23, 851973, 23, 851975, 16, 851977, 24, 851982, 23, 851985, 24, 851987, 16, 917526, 22, 1048574, 12, 983040, 16, 983043, 23, 983046, 16, 983048, 16, 983050, 16, 983052, 23, 983054, 16, 983057, 24, 983059, 16, 1048598, 22, 1179646, 12, 1114112, 16, 1114114, 23, 1114116, 16, 1114118, 16, 1114121, 23, 1114124, 16, 1114126, 23, 1114129, 24, 1114131, 16, 1179670, 22, 1310718, 12, 1245184, 23, 1245186, 16, 1245188, 16, 1245190, 16, 1245193, 24, 1245196, 16, 1245198, 16, 1245201, 24, 1245203, 16, 1310742, 22, 1441790, 15, 1376256, 11, 1376258, 11, 1376260, 11, 1376262, 11, 1376264, 11, 1376266, 11, 1376268, 11, 1376270, 11, 1376272, 11, 1376274, 11, 1376276, 11, 1441814, 25 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1294.69, 1252.91 )
 
 [node name="player" parent="." instance=ExtResource( 6 )]
 
@@ -299,5 +300,27 @@ level_path = NodePath("..")
 
 transform/pos = Vector2( 99.1589, 983.86 )
 level_path = NodePath("..")
+
+[node name="Light2D" type="Light2D" parent="."]
+
+enabled = true
+editor_only = true
+texture = ExtResource( 9 )
+offset = Vector2( 0, 0 )
+scale = 50.0
+color = Color( 1, 1, 1, 1 )
+energy = 20.0
+mode = 0
+range/height = 0.0
+range/z_min = -1024
+range/z_max = 1024
+range/layer_min = 0
+range/layer_max = 0
+range/item_mask = 524288
+shadow/enabled = false
+shadow/color = Color( 0, 0, 0, 0 )
+shadow/buffer_size = 2048
+shadow/esm_multiplier = 80.0
+shadow/item_mask = 1
 
 
