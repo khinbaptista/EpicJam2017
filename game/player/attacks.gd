@@ -21,23 +21,29 @@ func _input(event):
 	
 	if event.is_action_pressed("attack_melee_surround") and not event.is_echo():
 		var attack = surround_attack.instance()
+		attack.player = player
 		attack.set_global_pos(player.get_global_pos())
 		attack.damage = damage_attr.value
+		anim_player.speed = 1
 		anim_player.play("area_attack")
 		add_child(attack)
 	
 	if event.is_action_pressed("attack_melee_directional") and not event.is_echo():
 		var attack = directional_attack.instance()
+		attack.player = player
 		attack.set_global_pos(player.get_global_pos())
 		attack.set_global_rot(player.get_global_rot())
 		attack.damage = damage_attr.value
+		anim_player.speed = 1.6
 		anim_player.play("melee_attack")
 		add_child(attack)
 		
 	if event.is_action_pressed("attack_ranged") and not event.is_echo():
 		var attack = ranged_attack.instance()
+		attack.player = player
 		attack.set_global_pos(player.get_global_pos())
 		attack.set_global_rot(player.get_global_rot())
 		attack.damage = damage_attr.value
+		anim_player.speed = 1.0
 		anim_player.play("melee_attack")
 		add_child(attack)

@@ -4,6 +4,7 @@ export var damage = 1.0
 export var move = false
 export var speed = 200.0
 
+var player
 var direction = Vector2(0, 1)
 
 func _ready():
@@ -19,7 +20,9 @@ func _fixed_process(delta):
 
 func on_body_enter(body):
 	if body.has_method("hit"):
-		body.hit(damage)
+		body.hit(damage,player)
+	if body.has_method("knockback"):
+		body.knockback((body.get_pos() - player.get_pos()).normalized(), 1000.0)
 
 func finished():
 	queue_free()
