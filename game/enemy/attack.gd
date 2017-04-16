@@ -10,7 +10,6 @@ func on_enter():
 	.on_enter()
 	attack_timer = 0.0
 	set_process(true)
-	print("attack enter")
 
 func _process(delta):
 	attack_timer += delta
@@ -25,6 +24,5 @@ func body_exit(body):
 		machine.make_transition("seek")
 
 func on_exit():
-	print("attack exit")
 	set_process(false)
 	.on_exit()
