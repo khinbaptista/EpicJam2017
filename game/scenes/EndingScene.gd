@@ -23,14 +23,16 @@ var globalTimer = 0
 var first = true
 
 func _ready():
-	scenes.append("res://scenes/Text1.png")
-	scenes.append("res://scenes/Text2.png")
-	scenes.append("res://scenes/Text3.png")
-	scenes.append("res://scenes/Text4.png")
-	scenes.append("res://scenes/Text5.png")
-	scenes.append("res://scenes/Text6.png")
-	scenes.append("res://scenes/Text12.png")
-	scenes.append("res://scenes/Text13.png")
+	scenes.append("res://scenes/Ending_1.png")
+	scenes.append("res://scenes/Ending_2.png")
+	scenes.append("res://scenes/Ending_3.png")
+	scenes.append("res://scenes/Ending_4.png")
+	scenes.append("res://scenes/Ending_5.png")
+	scenes.append("res://scenes/Ending_6.png")
+	scenes.append("res://scenes/Ending_7.png")
+	scenes.append("res://scenes/Ending_8.png")
+	scenes.append("res://scenes/Ending_9.png")
+	scenes.append("res://scenes/Ending_10.png")
 	
 	var viewportRect = get_viewport_rect()
 	sprite = get_child(0)
