@@ -17,12 +17,12 @@
 [ext_resource path="res://dungeon/spr_hole7.tex" type="Texture" id=15]
 [ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=16]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
@@ -37,7 +37,7 @@ extents = Vector2( 60, 60 )
 0/occluder_offset = Vector2( 64, 64 )
 0/navigation_offset = Vector2( 64, 64 )
 0/shape_offset = Vector2( 64, 64 )
-0/shapes = [ SubResource( 9 ) ]
+0/shapes = [ SubResource( 1 ) ]
 1/name = "spr_stone_wall_corner"
 1/texture = ExtResource( 2 )
 1/tex_offset = Vector2( 0, 0 )
@@ -46,7 +46,7 @@ extents = Vector2( 60, 60 )
 1/occluder_offset = Vector2( 64, 64 )
 1/navigation_offset = Vector2( 64, 64 )
 1/shape_offset = Vector2( 64, 64 )
-1/shapes = [ SubResource( 8 ) ]
+1/shapes = [ SubResource( 2 ) ]
 2/name = "spr_hole8"
 2/texture = ExtResource( 9 )
 2/tex_offset = Vector2( 0, 0 )
