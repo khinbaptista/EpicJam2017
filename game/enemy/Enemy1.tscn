@@ -9,14 +9,13 @@
 [ext_resource path="res://player/light.png" type="Texture" id=7]
 [ext_resource path="res://gameplay/attribute.gd" type="Script" id=8]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 74.7908
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource/name = "attack"
 length = 3.0
 loop = false
 step = 0.1
@@ -81,12 +80,12 @@ tracks/5/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 0.257813, 0.257813, 1 ), Color( 1, 0.285156, 0.285156, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 406.101
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 1018.45
@@ -95,7 +94,7 @@ radius = 1018.45
 
 transform/scale = Vector2( 0.25, 0.25 )
 input/pickable = false
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 4
@@ -107,7 +106,8 @@ level_path = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-shape = SubResource( 4 )
+visibility/visible = false
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -201,7 +201,7 @@ color/color = Color( 1, 0.257813, 0.257813, 1 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/attack = SubResource( 1 )
+anims/attack = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -256,7 +256,7 @@ shadow/item_mask = 1
 editor/display_folded = true
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -266,7 +266,7 @@ angular_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_range"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 trigger = false
 _update_shape_index = 0
 
@@ -275,7 +275,7 @@ _update_shape_index = 0
 editor/display_folded = true
 visibility/visible = false
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 4, 4 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -286,7 +286,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sight"]
 
 transform/pos = Vector2( 4, 4 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 

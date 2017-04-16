@@ -37,9 +37,19 @@ visibility/self_opacity = 0.1
 navpoly = SubResource( 2 )
 enabled = true
 
-[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 111.911, 42.1053 )
+level_path = NodePath("..")
+
+[node name="Enemy1" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 140.479, -193.24 )
+level_path = NodePath("..")
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( -171.047, 160.458 )
 level_path = NodePath("..")
 
 [node name="player" parent="." instance=ExtResource( 3 )]

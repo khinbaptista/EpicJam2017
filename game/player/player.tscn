@@ -345,11 +345,14 @@ shadow/item_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
+visibility/visible = false
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="health" type="Node" parent="attributes"]
 
