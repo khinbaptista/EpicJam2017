@@ -243,6 +243,9 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( -131060, 1, 12, 1, 131084, 1, 262156, 1, 655359, 1, 589825, 1, 589827, 1, 589829, 1, 589831, 1, 589833, 1, 589838, 1, 589840, 1, 589842, 1, 720905, 1, 851977, 1, 851985, 1, 851987, 1, 983057, 1, 1114129, 1, 1245193, 1, 1245201, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Item" parent="." instance=ExtResource( 7 )]
 

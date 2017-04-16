@@ -291,12 +291,10 @@ _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
 
-editor/display_folded = true
-
 [node name="movement_speed" type="Node" parent="attributes"]
 
 script/script = ExtResource( 8 )
-value = 200.0
+value = 250.0
 max_value = 5000.0
 multiplier = 1.0
 addition = 0.0
@@ -304,7 +302,7 @@ addition = 0.0
 [node name="health" type="Node" parent="attributes"]
 
 script/script = ExtResource( 8 )
-value = 2.0
+value = 5.0
 max_value = 5.0
 multiplier = 1.0
 addition = 0.0
