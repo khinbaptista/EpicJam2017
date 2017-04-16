@@ -27,6 +27,7 @@ func _process(delta):
 	#process_input();
 	#move(Vector2(dir.x * speed * delta, dir.y * speed * delta));
 	process_particles(dir, delta);
+	process_knockback(delta)
 	#handle_fsm();
 	if(atkdelay_c < atk_delay):
 		atkdelay_c += delta;
@@ -91,9 +92,13 @@ func instance_attack(target):
 	get_node("attacks").add_child(attack_node)
 
 signal death
-func hit(damage):
+func hit(damage, player=null):
 	var health = get_node("attributes/health")
 	health.value -= damage
+	
+	if(player != null):
+		player.shake_screen(damage, 0.15)
+		
 	
 	printt("Enemy hit!", damage, health.value)
 	
@@ -101,6 +106,24 @@ func hit(damage):
 		emit_signal("death")
 		queue_free()
 
+var onKnockback = false
+var knbk_str = 0.0
+var knbk_falloff = 2000.0
+var knbk_dir = Vector2()
+func knockback(dir, strength):
+	onKnockback = true
+	knbk_str = strength
+	knbk_dir = dir
+	
+func process_knockback(delta):
+	if(onKnockback):
+		move(knbk_dir * knbk_str * delta)
+		knbk_str -= knbk_falloff * delta
+		if(knbk_str <= 0):
+			knbk_str = 0
+			onKnockback = false
+		pass
+		
 func on_body_enter(body):
 	if body extends PlayerClass:
 		fsm.get_node("Seeking").target = body

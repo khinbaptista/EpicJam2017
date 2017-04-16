@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=21 format=1]
+[gd_resource type="TileSet" load_steps=24 format=1]
 
 [ext_resource path="res://dungeon/dungeon_tilemap_shader.tres" type="CanvasItemMaterial" id=1]
 [ext_resource path="res://dungeon/spr_stone_wall.tex" type="Texture" id=2]
@@ -16,7 +16,9 @@
 [ext_resource path="res://dungeon/spr_hole2.tex" type="Texture" id=14]
 [ext_resource path="res://dungeon/spr_hole7.tex" type="Texture" id=15]
 [ext_resource path="res://dungeon/spr_stone_wall2.tex" type="Texture" id=16]
-[ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=17]
+[ext_resource path="res://dungeon/spr_hole_middle.tex" type="Texture" id=17]
+[ext_resource path="res://dungeon/spr_stone_wall_middle.tex" type="Texture" id=18]
+[ext_resource path="res://dungeon/spr_hole6.tex" type="Texture" id=19]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 
@@ -30,6 +32,11 @@ custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
 
 [sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 60, 60 )
+
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
@@ -129,7 +136,7 @@ extents = Vector2( 60, 60 )
 8/shape_offset = Vector2( 0, 0 )
 8/shapes = [  ]
 9/name = "spr_hole6"
-9/texture = ExtResource( 17 )
+9/texture = ExtResource( 19 )
 9/tex_offset = Vector2( 0, 0 )
 9/material = ExtResource( 1 )
 9/modulate = Color( 1, 1, 1, 1 )
@@ -271,4 +278,23 @@ extents = Vector2( 60, 60 )
 22/navigation_offset = Vector2( 64, 64 )
 22/shape_offset = Vector2( 0, 0 )
 22/shapes = [  ]
+23/name = "spr_hole_middle"
+23/texture = ExtResource( 17 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 0, 0, 128, 128 )
+23/occluder_offset = Vector2( 64, 64 )
+23/navigation_offset = Vector2( 64, 64 )
+23/shape_offset = Vector2( 0, 0 )
+23/shapes = [  ]
+24/name = "spr_stone_wall_middle"
+24/texture = ExtResource( 18 )
+24/tex_offset = Vector2( 0, 0 )
+24/modulate = Color( 1, 1, 1, 1 )
+24/region = Rect2( 0, 0, 128, 128 )
+24/occluder_offset = Vector2( 64, 64 )
+24/occluder = SubResource( 3 )
+24/navigation_offset = Vector2( 64, 64 )
+24/shape_offset = Vector2( 64, 64 )
+24/shapes = [ SubResource( 4 ) ]
 
