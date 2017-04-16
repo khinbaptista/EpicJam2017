@@ -13,9 +13,11 @@ func loadNextScene():
 	elif(i == 1):
 		i += 1
 		loadScene(second)
-	else:
+	elif(i == 2):
 		i += 1
 		loadScene(third)
+	else:
+		get_tree().change_scene("res://scenes/Ending.tscn")
 		
 func loadScene(j):
 	if(j == 1):
