@@ -4,7 +4,7 @@ export var first = 0
 export var second = 0
 export var third = 0
 
-var i = 0
+export var i = 0
 
 func loadNextScene():
 	if(i == 0):
