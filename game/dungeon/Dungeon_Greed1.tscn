@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=14 format=1]
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -218,5 +219,32 @@ level_path = NodePath("..")
 
 transform/pos = Vector2( 1064.23, 401.908 )
 level_path = NodePath("..")
+
+[node name="Hole" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 702.606, 248.255 )
+transform/scale = Vector2( 1.34747, 8.28971 )
+
+[node name="Hole2" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 948.481, 696.038 )
+transform/scale = Vector2( 1.5758, 7.79839 )
+
+[node name="Hole3" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 955.958, 1161.35 )
+transform/scale = Vector2( 1.5758, 3.19786 )
+
+[node name="Hole4" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 559.039, 1218.35 )
+transform/rot = 90.0
+transform/scale = Vector2( 1.5758, 3.90626 )
+
+[node name="Hole1" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 857.854, 455.015 )
+transform/rot = 90.0
+transform/scale = Vector2( 1.34747, 4.62091 )
 
 

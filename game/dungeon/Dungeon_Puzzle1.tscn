@@ -2,11 +2,11 @@
 
 [ext_resource path="res://dungeon/level.gd" type="Script" id=1]
 [ext_resource path="res://dungeon/spr_floor.tex" type="Texture" id=2]
-[ext_resource path="res://player/player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://dungeon/Key.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=5]
-[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=6]
-[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=7]
+[ext_resource path="res://dungeon/Key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://dungeon/Hole.tscn" type="PackedScene" id=4]
+[ext_resource path="res://dungeon/ExitDoor.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dungeon/dungeon_tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://dungeon/Item.tscn" type="PackedScene" id=8]
 [ext_resource path="res://enemy/Enemy1.tscn" type="PackedScene" id=9]
 
@@ -46,10 +46,6 @@ transform/pos = Vector2( 944.24, 644.013 )
 transform/scale = Vector2( 14.8142, 10.2644 )
 texture = ExtResource( 2 )
 modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
-
-[node name="player" parent="." instance=ExtResource( 3 )]
-
-transform/pos = Vector2( 802.348, 95.1801 )
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
@@ -145,26 +141,26 @@ shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
-[node name="Key" parent="." instance=ExtResource( 4 )]
+[node name="Key" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 163.176, 235.277 )
 
-[node name="Hole" parent="." instance=ExtResource( 5 )]
+[node name="Hole" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1655.08, 597.649 )
 transform/scale = Vector2( 8.20078, 1 )
 
-[node name="Hole1" parent="." instance=ExtResource( 5 )]
+[node name="Hole1" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 553.78, 1075.23 )
-transform/scale = Vector2( 2.89593, 1.71239 )
+transform/pos = Vector2( 572.148, 1075.23 )
+transform/scale = Vector2( 3.46994, 1.71239 )
 
-[node name="Hole2" parent="." instance=ExtResource( 5 )]
+[node name="Hole2" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 94.8578, 1073.87 )
-transform/scale = Vector2( 2.89593, 1.64776 )
+transform/pos = Vector2( 125.407, 1085.76 )
+transform/scale = Vector2( 3.85059, 2.01941 )
 
-[node name="ExitDoor" parent="." instance=ExtResource( 6 )]
+[node name="ExitDoor" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1313.84, 1239.29 )
 is_open = false
@@ -172,7 +168,7 @@ is_open = false
 [node name="TileMap" type="TileMap" parent="."]
 
 mode = 0
-tile_set = ExtResource( 7 )
+tile_set = ExtResource( 6 )
 cell/size = Vector2( 64, 64 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
@@ -185,10 +181,14 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -65529, 1, 65543, 1, 131088, 1, 196615, 1, 262160, 1, 327685, 1, 327687, 1, 393232, 1, 524304, 1, 524306, 1, 524308, 1, 655360, 1, 655362, 1, 655364, 1, 655366, 1, 655368, 1, 786432, 1, 786434, 1, 786436, 1, 786438, 1, 786440, 1, 917504, 1, 917506, 1, 917508, 1, 917510, 1, 917512, 1 )
+tile_data = IntArray( -65529, 1, 65543, 1, 131088, 1, 196615, 1, 262160, 1, 327685, 1, 327687, 1, 393232, 1, 524304, 1, 524306, 1, 524308, 1, 524310, 23, 524312, 23, 524314, 23, 524316, 23, 655360, 1, 655362, 1, 655364, 1, 655366, 1, 655368, 1, 786432, 1, 786434, 1, 786436, 1, 786438, 1, 786440, 1, 917504, 1, 917506, 1, 917508, 1, 917510, 1, 917512, 1, 1048576, 23, 1048578, 23, 1048583, 23, 1048585, 23 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="player" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 802.348, 95.1801 )
 
 [node name="Item" parent="." instance=ExtResource( 8 )]
 
