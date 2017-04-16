@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=18 format=1]
 
 [ext_resource path="res://enemy/Enemy1.gd" type="Script" id=1]
 [ext_resource path="res://enemy/Enemy1.tex" type="Texture" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://gameplay/attribute.gd" type="Script" id=8]
 [ext_resource path="res://Sounds/FX/ENEMY_DEATH.wav" type="Sample" id=9]
 [ext_resource path="res://Sounds/FX/ENEMY_HIT.wav" type="Sample" id=10]
-[ext_resource path="res://Sounds/FX/ENEMY_IDLE.wav" type="Sample" id=11]
+[ext_resource path="res://Sounds/imported/ENEMY_IDLE.smp" type="Sample" id=11]
+[ext_resource path="res://Sounds/FX/ENEMY_IDLE.wav" type="Sample" id=12]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -108,10 +109,16 @@ samples/hit = {
 "sample": ExtResource( 10 )
 }
 samples/idle = {
-"db": 0.0,
+"db": 24.0,
 "pitch": 1.0,
 "priority": 0,
 "sample": ExtResource( 11 )
+}
+samples/lixo = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
 }
 
 [node name="Enemy1" type="KinematicBody2D"]

@@ -85,6 +85,7 @@ func loadNext():
 		nextScene = load(scenes[i])
 		nextSprite.set_texture(nextScene)
 	else:
+		get_tree().get_root().get_node("/root/bgm").play("")
 		get_tree().change_scene("res://scenes/CardsScene.tscn")
 	
 func swapScene():

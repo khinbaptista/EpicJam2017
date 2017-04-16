@@ -1,6 +1,7 @@
 extends TextureFrame
 
 func _ready():
+	get_tree().get_root().get_node("/root/bgm").play("MUSIC_MENU_AND_CREDITS")
 	set_process_input(true)
 
 func _input(event):
