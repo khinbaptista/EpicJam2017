@@ -22,12 +22,14 @@ extents = Vector2( 2.12575, 77.6364 )
 custom_solver_bias = 0.0
 extents = Vector2( 2.12575, 75.8534 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.12575, 75.8534 )
 
 [node name="Dungeon" type="Node2D"]
+
+transform/pos = Vector2( 11.1581, -5.57898 )
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -39,6 +41,7 @@ modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 362.324, 1261.61 )
+pushback = 20.0
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
@@ -87,7 +90,7 @@ _update_shape_index = 0
 
 [node name="right_wall" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 1015.38, 281.843 )
+transform/pos = Vector2( 1040.61, 277.638 )
 input/pickable = false
 shapes/0/shape = SubResource( 3 )
 shapes/0/transform = Matrix32( 3.65791, 0, 0, 8.83403, 396.266, 389.11 )
@@ -111,7 +114,7 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 490.919, 2.51754 )
 input/pickable = false
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( -2.59176e-07, -5.92926, 9.37329, -4.0972e-07, 231.756, -8.48521 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -126,7 +129,7 @@ bounce = 0.0
 transform/pos = Vector2( 231.756, -8.48521 )
 transform/rot = 90.0
 transform/scale = Vector2( 5.92926, 9.37329 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 

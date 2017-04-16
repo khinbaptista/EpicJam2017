@@ -22,7 +22,7 @@ extents = Vector2( 2.12575, 77.6364 )
 custom_solver_bias = 0.0
 extents = Vector2( 2.12575, 75.8534 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 2.12575, 75.8534 )
@@ -108,7 +108,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 559.225, -16.4563 )
 input/pickable = false
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 4 )
 shapes/0/transform = Matrix32( -2.59176e-07, -5.92926, 11.712, -5.11948e-07, 336.482, -12.28 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -123,7 +123,7 @@ bounce = 0.0
 transform/pos = Vector2( 336.482, -12.28 )
 transform/rot = 90.0
 transform/scale = Vector2( 5.92926, 11.712 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 trigger = false
 _update_shape_index = 0
 
@@ -178,6 +178,7 @@ transform/pos = Vector2( 1456.41, 112.204 )
 [node name="player" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 251.36, 345.087 )
+pushback = 20.0
 
 [node name="TileMap" type="TileMap" parent="."]
 

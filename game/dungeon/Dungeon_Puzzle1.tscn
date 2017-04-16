@@ -40,6 +40,7 @@ modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 [node name="player" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 802.348, 95.1801 )
+pushback = 20.0
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
