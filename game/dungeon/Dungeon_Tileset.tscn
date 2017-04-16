@@ -18,27 +18,30 @@
 [ext_resource path="res://dungeon/spr_stone_wall4.tex" type="Texture" id=16]
 [ext_resource path="res://dungeon/spr_stone_wall_corner4.tex" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 60, 60 )
 
 [node name="Dungeon_Tileset" type="Node2D"]
 
+transform/pos = Vector2( 0, 2.27208 )
+
 [node name="spr_stone_wall" type="Sprite" parent="."]
 
 transform/pos = Vector2( 70, 350 )
 texture = ExtResource( 1 )
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="spr_stone_wall"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -50,7 +53,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spr_stone_wall/StaticBody2D"]
 
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
@@ -58,11 +61,12 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 70, 490 )
 texture = ExtResource( 2 )
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="spr_stone_wall_corner"]
 
 input/pickable = false
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -74,7 +78,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spr_stone_wall_corner/StaticBody2D"]
 
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
