@@ -18,4 +18,3 @@ func update_display():
 			get_node("heart" + str(i)).set_texture(heart_full)
 		else:
 			get_node("heart" + str(i)).set_texture(heart_hollow)
-		
