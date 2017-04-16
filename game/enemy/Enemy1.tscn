@@ -209,7 +209,6 @@ autoplay = ""
 
 [node name="StateMachine" type="Node" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 3 )
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -291,6 +290,8 @@ trigger = false
 _update_shape_index = 0
 
 [node name="attributes" type="Node" parent="."]
+
+editor/display_folded = true
 
 [node name="movement_speed" type="Node" parent="attributes"]
 
