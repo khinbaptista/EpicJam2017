@@ -37,9 +37,7 @@ func changed_focus(button):
 
 func pressed_continue():
 	get_node("/root/ScenesData").i = 0
-	print("Continue")
 	get_tree().change_scene_to(next_scene)
 
 func pressed_quit():
-	print("Give up")
 	get_tree().quit()
